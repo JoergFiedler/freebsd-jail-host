@@ -16,51 +16,51 @@ You will find a sample project which uses this role [here](https://github.com/Jo
 Role Variables
 --------------
 
-### jh_net_int_if
+##### jh_net_int_if
 
 The internal interface to which the jail's ip addresses will be added. Default: `lo0`.
 
-### jh_net_int_ip
+##### jh_net_int_ip
 
 The hosts internal ip address. This address is added to the internal interface as well. Default: `10.1.0.1`.
 
-### jh_net_ext_if
+##### jh_net_ext_if
 
 The servers external interface. Default: `vtnet0`.
 
-### jh_net_ext_ip
+##### jh_net_ext_ip
 
 The servers external ip address: Default: `10.0.2.15`.
 
-### jh_ssh_user
+##### jh_ssh_user
 
 The user name allowed to access this server via ssh. Default: `vagrant`.
 
-### jh_ssh_port
+##### jh_ssh_port
 
 The port sshd listens on. Default: `22`.
 
-### jh_ioc_zpool_name
+##### jh_ioc_zpool_name
 
 The name of the ZFS pool that should be used by iocage. Default: `tank`.
 
-### jh_ioc_zpool_devices
+##### jh_ioc_zpool_devices
 
 If the ZFS pool is to be created, this specifies a space sparated list of devices to use for the pool. There is no valid default. You have to specify, if the ZFS pool does not exist already. Default: ``.
 
-### jh_ioc_dir
+##### jh_ioc_dir
 
 The base directory for iocage. Default: `/ioc`.
 
-### jh_ioc_releases_dir
+##### jh_ioc_releases_dir
 
 The directory for FreeBSD releases used by iocage: Default: `{{ ioc_dir }}/releases`.
 
-### jh_ioc_jails_dir
+##### jh_ioc_jails_dir
 
 The directory the jails will resist in. Default: `{{ ioc_dir }}/jails`.
 
-### jh_ioc_release_version
+##### jh_ioc_release_version
 
 The FreeBSD version fetched/used by iocage. Default: `10.2-RELEASE`.:w!
 
