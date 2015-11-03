@@ -1,0 +1,22 @@
+---
+- name: Adjust sshd (allowed user, authentication, ..)
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+    insertbefore: '^#Port'
+  with_items:
+  - { regexp: '^Port', line: 'Port {{ jh_ssh_port }}' }
+  - { regexp: '^Protocol', line: 'Protocol 2' }
+  - { regexp: '^AllowUsers', line: 'AllowUsers {{ jh_ssh_user }}'}
+  - { regexp: '^MaxStartups', line: 'MaxStartups 5:50:10' }
+  - { regexp: '^LoginGraceTime', line: 'LoginGraceTime 30' }
+  - { regexp: '^ChallengeResponseAuthentication',
+      line: 'ChallengeResponseAuthentication no' }
+  - { regexp: '^PasswordAuthentication', line: 'PasswordAuthentication no' }
+  - { regexp: '^UseDNS', line: 'UseDNS no' }
+  - { regexp: '^UsePAM', line: 'UsePAM no' }
+  - { regexp: '^ClientAliveInterval', line: 'ClientAliveInterval 30' }
+  notify:
+    - reload sshd

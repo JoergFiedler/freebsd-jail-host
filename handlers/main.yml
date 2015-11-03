@@ -1,0 +1,5 @@
+---
+# handlers file for jail_host
+- name: reload pf
+  service: name=pf
+           state=reloaded
