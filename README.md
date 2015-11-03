@@ -1,4 +1,4 @@
-Role Name
+freebsd-jail-host
 =========
 
 This role is used to create a FreeBSD system which in turn may be used to host one or more jails.
@@ -60,7 +60,7 @@ None.
 Example Playbook
 ----------------
 
-Playbook example which need to be overriden if this role is used to setup a EC2 instance.
+Playbook example with overriden defaults to use this role to setup a EC2 instance.
 
     - hosts: servers
       roles:
