@@ -54,11 +54,11 @@ The base directory for iocage. Default: `/ioc`.
 
 ##### jh_ioc_releases_dir
 
-The directory for FreeBSD releases used by iocage: Default: `{{ ioc_dir }}/releases`.
+The directory for FreeBSD releases used by iocage: Default: `{{ jh_ioc_dir }}/releases`.
 
 ##### jh_ioc_jails_dir
 
-The directory the jails will resist in. Default: `{{ ioc_dir }}/jails`.
+The directory the jails will resist in. Default: `{{ jh_ioc_dir }}/jails`.
 
 ##### jh_ioc_release_version
 
