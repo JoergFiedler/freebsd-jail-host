@@ -2,7 +2,7 @@ Role Name
 =========
 
 This role is used to create a FreeBSD system which in turn may be used to host one or more jails.
-There are roles for jails which may be used as a www, db, or mail server. You may combine those jails as you wish to create a server that may host a bunch of wordpress installations,a single mail server, or both.
+There are roles for jails which may be used in combination with this one to create a jailed www, db, or mail server. You may combine those jails as you wish to create a server that may host a bunch of wordpress installations,a single mail server, or both.
 
 See [my other project](https://github.com/JoergFiedler/freebsd-ansible-demo) for further information and how to use it.
 
@@ -48,24 +48,9 @@ The name of the ZFS pool that should be used by iocage. Default: `tank`.
 
 If the ZFS pool is to be created, this specifies a space sparated list of devices to use for the pool. There is no valid default. You have to specify, if the ZFS pool does not exist already. Default: ``.
 
-##### jh_ioc_dir
-
-The base directory for iocage. Default: `/ioc`.
-
-##### jh_ioc_releases_dir
-
-The directory for FreeBSD releases used by iocage: Default: `{{ jh_ioc_dir }}/releases`.
-
-##### jh_ioc_jails_dir
-
-The directory the jails will resist in. Default: `{{ jh_ioc_dir }}/jails`.
-
 ##### jh_ioc_release_version
 
-The FreeBSD version fetched/used by iocage. Default: `10.2-RELEASE`.:w!
-
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The FreeBSD version fetched/used by iocage. Default: `10.2-RELEASE`.
 
 Dependencies
 ------------
@@ -75,11 +60,15 @@ None.
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Playbook example which need to be overriden if this role is used to setup a EC2 instance.
 
     - hosts: servers
-      roles::
-         - { role: username.rolename, x: 42 }
+      roles:
+         - { role: 'JoergFiedler.freebsd-jail-host',
+             jh_ssh_user: 'ec2-user',
+             jh_ext_ip: '{{ ansible_default_ipv4.address }}',
+             jh_net_ext_if: '{{ ansible_default_ipv4.interface }}',
+             jh_ioc_devices: 'xbd5' }
 
 License
 -------
