@@ -11,7 +11,7 @@ jh_ssh_port: 22
 jh_ioc_zpool_name: "tank"
 jh_ioc_zpool_devices: ""
 jh_ioc_dir: "/ioc"
-jh_ioc_releases_dir: "{{ ioc_dir }}/releases"
-jh_ioc_jails_dir: "{{ ioc_dir }}/jails"
+jh_ioc_releases_dir: "{{ jh_ioc_dir }}/releases"
+jh_ioc_jails_dir: "{{ jh_ioc_dir }}/jails"
 jh_ioc_release_version: "10.2-RELEASE"
 
