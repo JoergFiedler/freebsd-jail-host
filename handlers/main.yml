@@ -7,4 +7,4 @@
   service: name=pf state=reloaded
 
 - name: Reload sshd
-  service: name=ssjd state=reloaded
+  service: name=sshd state=reloaded
