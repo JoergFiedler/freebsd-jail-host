@@ -5,7 +5,7 @@
            state=started
 
 - name: Check if ZFS pool exists
-  command: zpool status {{ iocage_zpool }}
+  command: zpool status {{ host_ioc_zpool_name }}
   register: zpool_status
   ignore_errors: yes
   changed_when: false
