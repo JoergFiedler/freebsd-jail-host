@@ -11,6 +11,6 @@
   changed_when: false
 
 - name: Create ZFS pool
-  command: zpool create {{ jh_ioc_zpool_name }} {{ jh_ioc_zpool_devices }}
+  command: zpool create {{ host_ioc_zpool_name }} {{ host_ioc_zpool_devices }}
   when: "'no such pool' in zpool_status.stderr"
 

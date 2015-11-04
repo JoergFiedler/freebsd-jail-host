@@ -7,9 +7,9 @@
     line: '{{ item.line }}'
     insertbefore: '^#Port'
   with_items:
-  - { regexp: '^Port', line: 'Port {{ jh_ssh_port }}' }
+  - { regexp: '^Port', line: 'Port {{ host_sshd_port }}' }
   - { regexp: '^Protocol', line: 'Protocol 2' }
-  - { regexp: '^AllowUsers', line: 'AllowUsers {{ jh_ssh_user }}'}
+  - { regexp: '^AllowUsers', line: 'AllowUsers {{ host_sshd_user }}'}
   - { regexp: '^MaxStartups', line: 'MaxStartups 5:50:10' }
   - { regexp: '^LoginGraceTime', line: 'LoginGraceTime 30' }
   - { regexp: '^ChallengeResponseAuthentication',

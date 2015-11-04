@@ -1,14 +1,14 @@
 ---
 # defaults file for jail_host
-jh_net_int_if: "lo0"
-jh_net_int_ip: "10.1.0.1"
-jh_net_ext_if: "vtnet0"
-jh_net_ext_ip: "10.0.2.15"
+host_net_int_if: 'lo0'
+host_net_int_ip: '10.1.0.1'
+host_net_ext_if: 'vtnet0'
+host_net_ext_ip: '10.0.2.15'
 
-jh_ssh_user: "vagrant"
-jh_ssh_port: 22
+host_sshd_user: 'vagrant'
+host_sshd_port: 22
 
-jh_ioc_zpool_name: "tank"
-jh_ioc_zpool_devices: ""
-jh_ioc_release_version: "10.2-RELEASE"
+host_ioc_zpool_name: 'tank'
+host_ioc_zpool_devices: ''
+host_ioc_release_version: '10.2-RELEASE'
 
