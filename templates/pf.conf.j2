@@ -1,7 +1,7 @@
 ext_if="{{ host_net_ext_if }}"
 ext_ip="{{ host_net_ext_ip }}"
 
-sshd_port={{ sshd_port }}
+sshd_port={{ host_sshd_port }}
 
 table <nat_jails> persist file "/etc/pf.table.nat-jails"
 
