@@ -19,4 +19,4 @@
   - { regexp: '^UsePAM', line: 'UsePAM no' }
   - { regexp: '^ClientAliveInterval', line: 'ClientAliveInterval 30' }
   notify:
-    - reload sshd
+    - Reload sshd

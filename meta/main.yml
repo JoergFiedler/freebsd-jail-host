@@ -2,7 +2,6 @@
 galaxy_info:
   author: Joerg Fiedler
   description: FreeBSD Jail host.
-  company: 
   license: BSD
   min_ansible_version: 1.9
   platforms:

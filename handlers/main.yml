@@ -1,5 +1,10 @@
 ---
 # handlers file for jail_host
-- name: reload pf
-  service: name=pf
-           state=reloaded
+- name: Start iocage
+  command: service iocage start
+
+- name: Reload pf
+  service: name=pf state=reloaded
+
+- name: Reload sshd
+  service: name=ssjd state=reloaded

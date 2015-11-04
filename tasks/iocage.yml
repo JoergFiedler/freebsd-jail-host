@@ -1,7 +1,6 @@
 ---
 - name: Install iocage
-  pkgng: name=iocage
-         state=present
+  pkgng: name=iocage state=present
 
 - name: Mark zpool for iocage usage
   command: /usr/local/sbin/iocage activate {{ jh_ioc_zpool_name }}
