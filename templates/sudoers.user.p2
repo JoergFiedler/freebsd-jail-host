@@ -1,2 +1,2 @@
-%{{ host_ssh_user }} ALL=(ALL) NOPASSWD: ALL
+%{{ host_sshd_user }} ALL=(ALL) NOPASSWD: ALL
 
