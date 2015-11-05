@@ -26,11 +26,11 @@ The servers internal ip address. This address is added to the internal interface
 
 ##### host_net_ext_if
 
-The servers external interface. Default: `vtnet0`.
+The servers external interface. Default: `'{{ ansible_default_ipv4.interface }}'`.
 
 ##### host_net_ext_ip
 
-The servers external ip address: Default: `10.0.2.15`.
+The servers external ip address: Default: `{{ ansible_default_ipv4.address }}'`.
 
 ##### host_sshd_user
 
@@ -40,13 +40,17 @@ The user name allowed to access this server via ssh. Default: `vagrant`.
 
 The port sshd listens on. Default: `22`.
 
+##### host_sshd_pub_key
+
+The user's public key used for ssh authentication. Defaults to vagrant insecure public key: `'ssh-rsa AAAAB3NzaC1yc2E…'`
+
 ##### host_ioc_zpool_name
 
 The name of the ZFS pool that should be used by iocage. Default: `tank`.
 
 ##### host_ioc_zpool_devices
 
-If the ZFS pool is to be created, this specifies a space sparated list of devices to use for the pool. There is no valid default. You have to specify, if the ZFS pool does not exist already. Default: ``.
+If the ZFS pool is to be created, this specifies a space sparated list of devices to use for the pool. There is no valid default. You have to specify, if the ZFS pool does not exist already. No default value.
 
 ##### host_ioc_release_version
 
@@ -65,8 +69,6 @@ Playbook example with overriden defaults to use this role to setup a EC2 instanc
     - hosts: servers
       vars:
       - host_ssh_user: 'ec2-user'
-      - host_ext_ip: '{{ ansible_default_ipv4.address }}'
-      - host_net_ext_if: '{{ ansible_default_ipv4.interface }}'
       - host_ioc_devices: 'xbd5'
 
       roles:

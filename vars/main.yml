@@ -1,5 +1,4 @@
 ---
 # vars file for jail_host
-host_ioc_dir: "/iocage"
 host_ioc_releases_dir: "{{ host_ioc_dir }}/releases"
 host_ioc_jails_dir: "{{ host_ioc_dir }}/jails"
