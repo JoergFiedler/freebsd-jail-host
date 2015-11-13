@@ -2,6 +2,7 @@
 # defaults file for jail_host
 host_net_int_if: 'lo0'
 host_net_int_ip: '10.1.0.1'
+host_net_int_net: '10.1.0.1/24'
 host_net_ext_if: '{{ ansible_default_ipv4.interface }}'
 host_net_ext_ip: '{{ ansible_default_ipv4.address }}'
 
