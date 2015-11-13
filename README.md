@@ -24,6 +24,10 @@ The internal interface to which the jail's ip addresses will be added. Default: 
 
 The servers internal ip address. This address is added to the internal interface as well. Default: `10.1.0.1`.
 
+##### host_net_int_net
+
+The mask for the jail's internal network. Used allow UDP pass pf in order to reach syslogd. Default: `'10.1.0.1/24'`.
+
 ##### host_net_ext_if
 
 The servers external interface. Default: `'{{ ansible_default_ipv4.interface }}'`.
