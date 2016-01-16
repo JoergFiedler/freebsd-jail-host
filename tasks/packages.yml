@@ -1,0 +1,7 @@
+---
+- name: Install additional packages
+  pkgng: name={{ item }}
+         state=present
+  with_items:
+  - py27-MySQLdb
+  - tmux

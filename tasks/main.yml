@@ -5,4 +5,5 @@
  - include: zpool.yml
  - include: iocage.yml
  - include: user.yml
+ - include: packages.yml
 
