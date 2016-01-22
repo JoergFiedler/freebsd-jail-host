@@ -1,3 +1,9 @@
 ---
+- name: Read current timezone info
+  command: cat /var/db/zoneinfo
+  register: zoneinfo
+  changed_when: false
+
 - name: Set timezone info
-  command: cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+  command: tzsetup {{ host_timezone }}
+  when: zoneinfo.stdout != host_timezone

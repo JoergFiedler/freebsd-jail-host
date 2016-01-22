@@ -36,6 +36,10 @@ The servers external interface. Default: `'{{ ansible_default_ipv4.interface }}'
 
 The servers external ip address: Default: `{{ ansible_default_ipv4.address }}'`.
 
+##### host_timezone
+
+The timezone the server is located. Default: `'Europe/Berlin'`.
+
 ##### host_sshd_user
 
 The user name allowed to access this server via ssh. Default: `vagrant`.
