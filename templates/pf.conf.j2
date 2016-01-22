@@ -8,7 +8,6 @@ scrub in all
 
 ###########
 # NAT rules
-nat pass log on $ext_if from $ext_if to {{ ssmtp_mailhub }} -> $ext_ip
 
 nat-anchor nat-jail
 load anchor nat-jail from "/etc/pf.anchor.nat-jail.conf"
@@ -31,6 +30,9 @@ pass quick log proto tcp from 127.0.0.1 to 127.0.0.1 port $sshd_port keep state
 # allow outgoing DNS and HTTP(S) traffic on external interface
 pass out quick log on $ext_if proto { tcp,udp } from $ext_ip to any port 53
 pass out quick log on $ext_if proto { tcp } from $ext_ip to any port { 80,443 }
+
+# allow outgoing mail via sstmp
+pass out quick log on $ext_if proto tcp from $ext_ip to {{ ssmtp_mailhub }} port {{ ssmtp_mailhub_port }}
 
 anchor rls-jail
 load anchor rls-jail from "/etc/pf.anchor.rls-jail.conf"
