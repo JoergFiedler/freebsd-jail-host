@@ -1,0 +1,3 @@
+---
+- name: Set timezone info
+  command: cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime

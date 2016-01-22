@@ -5,6 +5,7 @@
  - include: zpool.yml
  - include: iocage.yml
  - include: user.yml
+ - include: timezone.yml
  - include: packages.yml
  - include: ssmtp.yml
 
