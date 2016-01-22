@@ -60,6 +60,38 @@ If the ZFS pool is to be created, this specifies a space sparated list of device
 
 The FreeBSD version fetched/used by iocage. Default: `10.2-RELEASE`.
 
+##### ssmtp_forward_address
+
+System mails are forwarded to this address. See [ssmtp man page](https://www.freebsd.org/cgi/man.cgi?query=ssmtp&apropos=0&sektion=0&manpath=FreeBSD+10.2-RELEASE+and+Ports&arch=default&format=html) for further information.
+
+Default: `'freebsd-ansible-demo@maildrop.cc'`.
+
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+
+##### ssmtp_forward_mailhub
+
+System mails are forwarded using this mail relay. See [ssmtp man page](https://www.freebsd.org/cgi/man.cgi?query=ssmtp&apropos=0&sektion=0&manpath=FreeBSD+10.2-RELEASE+and+Ports&arch=default&format=html) for further information.
+
+Default: `'mail.maildrop.cc'`.
+
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+
+##### ssmtp_auth_user
+The user name which is used to authenticate against the SMTP server. No SMTP AUTH if blank. Default: `''`.
+
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+##### ssmtp_auth_pass
+The password which is used to perform SMTP AUTH. No authentication if blank. Default: `''`.
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+##### ssmtp_use_starttls
+Use STARTTLS before starting SSL negotiation. Default: `'no'`.
+
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+##### ssmtp_use_tls
+Uses TLS when talking to SMTP server. Default: `'no'`.
+
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+
 Dependencies
 ------------
 

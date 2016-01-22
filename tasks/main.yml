@@ -6,4 +6,5 @@
  - include: iocage.yml
  - include: user.yml
  - include: packages.yml
+ - include: ssmtp.yml
 

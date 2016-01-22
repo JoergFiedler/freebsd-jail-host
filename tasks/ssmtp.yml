@@ -1,0 +1,12 @@
+---
+- name: Install ssmtp for easy mail forwarding
+  pkgng: name=ssmtp
+         state=present
+
+- name: Copy ssmtp.conf into place
+  template: src=ssmtp.conf.p2
+            dest=/usr/local/etc/ssmtp/ssmtp.conf
+
+- name: Copy mailer configuration into place
+  copy: src=mailer.conf
+        dest=/etc/mail/mailer.conf

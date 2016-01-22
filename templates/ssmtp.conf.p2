@@ -1,0 +1,11 @@
+#
+# /etc/ssmtp.conf -- a config file for sSMTP sendmail.
+#
+
+root={{ ssmtp_forward_address }}
+mailhub={{ ssmtp_forward_mailhub }}
+hostname={{ ansible_fqdn }}
+UseSTARTTLS={{ ssmtp_use_starttls }}
+UseTLS={{ ssmtp_use_tls }}
+{% if ssmtp_auth_user %}AuthUser={{ ssmtp_auth_user }}{% endif %}
+{% if ssmtp_auth_pass %}AuthPass={{ ssmtp_auth_pass }}{% endif %}

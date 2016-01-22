@@ -3,14 +3,12 @@ ext_ip="{{ host_net_ext_ip }}"
 
 sshd_port={{ host_sshd_port }}
 
-table <nat_jails> persist file "/etc/pf.table.nat-jails"
-
 set block-policy return
 scrub in all
 
 ###########
 # NAT rules
-nat pass log on $ext_if from <nat_jails> to ! {{ host_net_int_net }} -> $ext_ip
+nat pass log on $ext_if from $ext_if to {{ ssmtp_forward_mailhub }} -> $ext_ip
 
 nat-anchor nat-jail
 load anchor nat-jail from "/etc/pf.anchor.nat-jail.conf"

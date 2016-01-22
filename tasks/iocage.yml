@@ -1,6 +1,7 @@
 ---
 - name: Install iocage
-  pkgng: name=iocage state=present
+  pkgng: name=iocage
+         state=present
 
 - name: Mark zpool for iocage usage
   command: /usr/local/sbin/iocage activate {{ host_ioc_zpool_name }}
@@ -8,9 +9,9 @@
 
 - name: Fetch FreeBSD release
   command: /usr/local/sbin/iocage fetch \
-           release='{{ host_ioc_release_version }}' \
-           ftpfiles='base.txz src.txz doc.txz'
-    creates='{{ host_ioc_releases_dir }}/{{ host_ioc_release_version }}'
+           release="{{ host_ioc_release_version }}" \
+           ftpfiles="base.txz src.txz doc.txz"
+           creates='{{ host_ioc_releases_dir }}/{{ host_ioc_release_version }}'
 
 - name: Enable iocage service
   service: name=iocage
