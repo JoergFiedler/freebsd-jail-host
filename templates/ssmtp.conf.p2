@@ -8,5 +8,9 @@ Mailhub={{ ssmtp_mailhub }}:{{ ssmtp_mailhub_port }}
 Hostname={{ ansible_fqdn }}
 UseSTARTTLS={{ ssmtp_use_starttls }}
 UseTLS={{ ssmtp_use_tls }}
-{% if ssmtp_auth_user %}AuthUser={{ ssmtp_auth_user }}{% endif %}
-{% if ssmtp_auth_pass %}AuthPass={{ ssmtp_auth_pass }}{% endif %}
+{% if ssmtp_auth_user %}
+AuthUser={{ ssmtp_auth_user }}
+{% endif %}
+{% if ssmtp_auth_pass %}
+AuthPass={{ ssmtp_auth_pass }}
+{% endif %}
