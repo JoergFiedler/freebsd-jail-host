@@ -3,6 +3,7 @@
   command: cat /var/db/zoneinfo
   register: zoneinfo
   changed_when: false
+  ignore_errors: true
 
 - name: Set timezone info
   command: tzsetup {{ host_timezone }}
