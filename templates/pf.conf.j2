@@ -8,7 +8,7 @@ scrub in all
 
 ###########
 # NAT rules
-nat pass log on $ext_if from $ext_if to {{ ssmtp_forward_mailhub }} -> $ext_ip
+nat pass log on $ext_if from $ext_if to {{ ssmtp_mailhub }} -> $ext_ip
 
 nat-anchor nat-jail
 load anchor nat-jail from "/etc/pf.anchor.nat-jail.conf"

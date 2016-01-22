@@ -1,6 +1,10 @@
 ---
+- name: Update comment for root user in user database
+  user: name=root
+        password=*
+        comment='root .at {{ ansible_fqdn }}'
+
 - name: Add sudo rules for ssh user on jail host
-  template:
-    src: sudoers.user.p2
-    dest: /usr/local/etc/sudoers.d/{{ host_sshd_user }}
-    validate: 'visudo -cf %s'
+  template: src=sudoers.user.p2
+            dest=/usr/local/etc/sudoers.d/{{ host_sshd_user }}
+            validate='visudo -cf %s'

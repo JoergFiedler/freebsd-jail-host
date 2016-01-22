@@ -60,15 +60,23 @@ If the ZFS pool is to be created, this specifies a space sparated list of device
 
 The FreeBSD version fetched/used by iocage. Default: `10.2-RELEASE`.
 
-##### ssmtp_forward_address
+##### ssmtp_root
 
-System mails are forwarded to this address. See [ssmtp man page](https://www.freebsd.org/cgi/man.cgi?query=ssmtp&apropos=0&sektion=0&manpath=FreeBSD+10.2-RELEASE+and+Ports&arch=default&format=html) for further information.
+System mails are forwarded to this account. See [ssmtp man page](https://www.freebsd.org/cgi/man.cgi?query=ssmtp&apropos=0&sektion=0&manpath=FreeBSD+10.2-RELEASE+and+Ports&arch=default&format=html) for further information.
 
-Default: `'freebsd-ansible-demo@maildrop.cc'`.
+Default: `'freebsd-ansible-demo'`.
 
 This feature is only active, if the variable `use_ssmtp` is set to any value.
 
-##### ssmtp_forward_mailhub
+##### ssmtp_rewrite_domain
+
+The domain part of mails sent by ssmtp is rewritten using this variable. See [ssmtp man page](https://www.freebsd.org/cgi/man.cgi?query=ssmtp&apropos=0&sektion=0&manpath=FreeBSD+10.2-RELEASE+and+Ports&arch=default&format=html) for further information.
+
+Default: `'maildrop.cc'`.
+
+This feature is only active, if the variable `use_ssmtp` is set to any value.
+
+##### ssmtp_mailhub
 
 System mails are forwarded using this mail relay. See [ssmtp man page](https://www.freebsd.org/cgi/man.cgi?query=ssmtp&apropos=0&sektion=0&manpath=FreeBSD+10.2-RELEASE+and+Ports&arch=default&format=html) for further information.
 
