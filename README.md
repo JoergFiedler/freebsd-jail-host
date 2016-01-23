@@ -52,6 +52,10 @@ The port sshd listens on. Default: `22`.
 
 The user's public key used for ssh authentication. Defaults to vagrant insecure public key: `'ssh-rsa AAAAB3NzaC1yc2E…'`
 
+##### host_home_zpool_name
+
+ZPool that should be used for `/home`. Default: `'tank'`.
+
 ##### host_ioc_zpool_name
 
 The name of the ZFS pool that should be used by iocage. Default: `tank`.
