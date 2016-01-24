@@ -4,13 +4,28 @@
            enabled=yes
            state=started
 
-- name: Check if ZFS pool exists
+- name: Check if ioc zpool exists
   command: zpool status {{ host_ioc_zpool_name }}
-  register: zpool_status
+  register: ioc_zpool_status
   ignore_errors: yes
   changed_when: false
 
-- name: Create ZFS pool
+- name: Create ioc zpool
   command: zpool create {{ host_ioc_zpool_name }} {{ host_ioc_zpool_devices }}
-  when: "'no such pool' in zpool_status.stderr"
+  when: "'no such pool' in ioc_zpool_status.stderr"
 
+- name: Check if srv zpool exists
+  command: zpool status {{ host_srv_zpool_name }}
+  register: srv_zpool_status
+  ignore_errors: yes
+  changed_when: false
+
+- name: Create srv zpool
+  command: zpool create {{ host_srv_zpool_name }} {{ host_srv_zpool_devices }}
+  when: "'no such pool' in srv_zpool_status.stderr"
+
+- name: Create srv dataset
+  zfs:  name={{ host_srv_dataset }}
+        state=present
+        atime=off
+        mountpoint={{ host_srv_dir }}

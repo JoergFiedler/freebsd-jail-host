@@ -13,7 +13,9 @@ host_sshd_pub_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp
 
 host_ioc_dir: '/iocage'
 host_ioc_zpool_name: 'tank'
-host_home_zpool_name: 'tank'
+host_srv_dir: '/srv'
+host_srv_dataset: 'tank/srv'
+host_srv_zpool_name: 'tank'
 host_ioc_release_version: '10.2-RELEASE'
 
 ssmtp_root: 'freebsd-ansible-demo'
