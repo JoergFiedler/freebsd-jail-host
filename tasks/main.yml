@@ -1,11 +1,11 @@
 ---
- - include: net.yml
- - include: pf.yml
- - include: sshd.yml
- - include: zpool.yml
- - include: iocage.yml
- - include: user.yml
- - include: timezone.yml
- - include: packages.yml
- - include: ssmtp.yml
+ - include: net.yml tags=host
+ - include: pf.yml tags=host
+ - include: sshd.yml tags=host
+ - include: zpool.yml tags=host
+ - include: iocage.yml tags=host
+ - include: user.yml tags=host
+ - include: timezone.yml tags=host
+ - include: packages.yml tags=host
+ - include: ssmtp.yml tags=host
 
