@@ -18,7 +18,7 @@
 
 - name: Create tarsnapper config directory
   file:
-    path: '/usr/local/etc/tarsnapper'
+    path: '/usr/local/etc/tarsnapper.d'
     state: directory
 
 - name: Copy tarsnapper config
@@ -41,7 +41,7 @@
 - name: Copy backup config for home directory
   copy:
     src: 'host-home.yml'
-    dest: '/usr/local/etc/tarsnapper/host-home.yml'
+    dest: '/usr/local/etc/tarsnapper.d/host-home.yml'
 
 - name: Copy weekly script
   copy:

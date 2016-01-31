@@ -1,4 +1,4 @@
 ---
-host-home:
+home:
   delta: default
   source: /home
