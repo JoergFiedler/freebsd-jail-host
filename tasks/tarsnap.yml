@@ -1,0 +1,50 @@
+---
+- name: Install additional packages
+  pkgng:
+    name: '{{ item }}'
+    state: present
+  with_items:
+  - tarsnap
+  - py27-pip
+
+- name: Install tarsnapper
+  pip:
+    name: 'tarsnapper'
+
+- name: Copy tarsnap key file
+  copy:
+    src: '{{ tarsnap_keyfile }}'
+    dest: '/root/tarsnap.key'
+
+- name: Create tarsnapper config directory
+  file:
+    path: '/usr/local/etc/tarsnapper'
+    state: directory
+
+- name: Copy tarsnapper config
+  template:
+    src: 'tarsnapper.yml.j2'
+    dest: '/usr/local/etc/tarsnapper.yml'
+
+- name: Copy tarsnap config file
+  template:
+    src: 'tarsnap.conf.j2'
+    dest: '/usr/local/etc/tarsnap.conf'
+
+- name: Create entry in crontab
+  cron:
+    name: 'tarsnapper'
+    minute: '15'
+    hour: '*/6'
+    job: '/usr/local/bin/tarsnapper -c /usr/local/etc/tarsnapper.yml make'
+
+- name: Copy backup config for home directory
+  copy:
+    src: 'host-home.yml'
+    dest: '/usr/local/etc/tarsnapper/host-home.yml'
+
+- name: Copy weekly script
+  copy:
+    src: '901.tarsnap'
+    dest: '/usr/local/etc/periodic/weekly/901.tarsnap'
+    mode: 0755

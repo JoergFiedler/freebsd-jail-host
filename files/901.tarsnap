@@ -1,0 +1,6 @@
+#!/bin/sh
+
+/usr/local/bin/tarsnap \
+  --print-stats \
+  --humanize-numbers \
+  -f \*

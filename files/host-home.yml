@@ -1,0 +1,4 @@
+---
+host-home:
+  delta: default
+  source: /home

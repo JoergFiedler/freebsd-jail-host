@@ -27,3 +27,8 @@
    tags:
      - host
 
+ - include: tarsnap.yml
+   when: tarsnap_keyfile is defined
+   tags:
+     - host
+
