@@ -11,5 +11,12 @@
   when: internal_ip|changed
 
 - name: Set hostname
-  hostname:
-    name: '{{ host_hostname }}'
+  command: hostname {{ host_hostname }}
+
+- name: Add hostname to rc.conf
+  lineinfile:
+    dest: '/etc/rc.conf'
+    state: present
+    regexp: '^hostname='
+    line: 'hostname="{{ host_hostname }}"'
+
