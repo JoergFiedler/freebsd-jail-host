@@ -10,8 +10,14 @@
   command: ifconfig {{ host_net_int_if }} inet alias {{ host_net_int_ip }} netmask 255.255.255.255
   when: internal_ip|changed
 
+- name: Get hostname
+  command: hostname
+  register: hostname
+  changed_when: false
+
 - name: Set hostname
   command: hostname {{ host_hostname }}
+  when: hostname.stdout != host_hostname
 
 - name: Add hostname to rc.conf
   lineinfile:
