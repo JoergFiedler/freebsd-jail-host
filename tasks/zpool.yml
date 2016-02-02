@@ -40,5 +40,5 @@
     name: 'hourly-sfs-snapshot'
     minute: '25'
     hour: '*'
-    job: 'periodic hourly'
+    job: '/usr/sbin/periodic hourly'
 
