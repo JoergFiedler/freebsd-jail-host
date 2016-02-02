@@ -1,0 +1,21 @@
+hourly_output="root"
+hourly_show_success="NO"
+hourly_show_info="YES"
+hourly_show_badconfig="NO"
+
+hourly_zfs_snapshot_enable="YES"
+hourly_zfs_snapshot_pools="{{ host_srv_zpool_name }}"
+hourly_zfs_snapshot_keep=10
+
+daily_zfs_snapshot_enable="YES"
+daily_zfs_snapshot_pools="{{ host_srv_zpool_name }}"
+daily_zfs_snapshot_keep=6
+
+weekly_zfs_snapshot_enable="YES"
+weekly_zfs_snapshot_pools="{{ host_srv_zpool_name }}"
+weekly_zfs_snapshot_keep=3
+
+monthly_zfs_snapshot_enable="YES"
+monthly_zfs_snapshot_pools="{{ host_srv_zpool_name }}"
+monthly_zfs_snapshot_keep=1
+

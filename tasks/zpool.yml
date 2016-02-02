@@ -29,3 +29,16 @@
         state=present
         atime=off
         mountpoint={{ host_srv_dir }}
+
+- name: Copy periodic conf for regular snapshots
+  template:
+    src: 'periodic.conf.j2'
+    dest: '/etc/periodic.conf'
+
+- name: Create entry in crontab to create hourly snapshots
+  cron:
+    name: 'hourly-sfs-snapshot'
+    minute: '25'
+    hour: '*'
+    job: 'periodic hourly'
+
