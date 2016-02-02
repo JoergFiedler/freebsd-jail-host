@@ -10,8 +10,9 @@
   - { regexp: '^Port', line: 'Port {{ host_sshd_port }}' }
   - { regexp: '^Protocol', line: 'Protocol 2' }
   - { regexp: '^AllowUsers', line: 'AllowUsers {{ host_sshd_user }}'}
-  - { regexp: '^MaxStartups', line: 'MaxStartups 5:50:10' }
-  - { regexp: '^LoginGraceTime', line: 'LoginGraceTime 30' }
+  - { regexp: '^MaxStartups', line: 'MaxStartups 3:50:5' }
+  - { regexp: '^MaxAuthTries', line: '1' }
+  - { regexp: '^LoginGraceTime', line: 'LoginGraceTime 5' }
   - { regexp: '^ChallengeResponseAuthentication',
       line: 'ChallengeResponseAuthentication no' }
   - { regexp: '^PasswordAuthentication', line: 'PasswordAuthentication no' }
