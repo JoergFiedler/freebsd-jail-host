@@ -26,6 +26,9 @@
 - include: ssmtp.yml
   tags:
     - host
+- include: ntp.yml
+  tags:
+    - host
 - include: tarsnap.yml
   when: tarsnap_keyfile is defined
   tags:

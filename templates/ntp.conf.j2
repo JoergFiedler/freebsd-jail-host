@@ -1,0 +1,7 @@
+{% for ntp_server in ntp_servers %}
+server {{ ntp_server }}
+{% endfor %}
+
+restrict ignore
+driftfile /var/db/ntp.drift
+

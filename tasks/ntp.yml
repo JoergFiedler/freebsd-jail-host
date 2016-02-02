@@ -1,0 +1,19 @@
+---
+- name: Copy ntp config
+  template:
+    src: 'ntp.conf.j2'
+    dest: '/etc/ntp.conf'
+
+- name: Activate NTP deamon
+  lineinfile:
+    dest: '/etc/rc.conf'
+    state: present
+    regexp: '^ntpd_enable='
+    line: 'ntpd_enable="YES"'
+
+- name: Adjust time on boot
+  lineinfile:
+    dest: '/etc/rc.conf'
+    state: present
+    regexp: '^ntpdate_enable='
+    line: 'ntpdate_enable="YES"'

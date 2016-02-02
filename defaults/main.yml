@@ -27,3 +27,9 @@ ssmtp_auth_user: ''
 ssmtp_auth_pass: ''
 ssmtp_use_starttls: 'no'
 ssmtp_use_tls: 'no'
+
+ntp_servers:
+  - '0.de.pool.ntp.org'
+  - '1.de.pool.ntp.org'
+  - '2.de.pool.ntp.org'
+  - '3.de.pool.ntp.org'
