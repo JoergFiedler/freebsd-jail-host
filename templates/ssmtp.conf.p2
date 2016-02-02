@@ -5,7 +5,7 @@
 Root={{ ssmtp_root }}
 RewriteDomain={{ ssmtp_rewrite_domain }}
 Mailhub={{ ssmtp_mailhub }}:{{ ssmtp_mailhub_port }}
-Hostname={{ ansible_fqdn }}
+Hostname={{ host_hostname }}
 UseSTARTTLS={{ ssmtp_use_starttls }}
 UseTLS={{ ssmtp_use_tls }}
 {% if ssmtp_auth_user %}
