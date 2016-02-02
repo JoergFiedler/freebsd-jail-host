@@ -35,6 +35,11 @@
     src: 'periodic.conf.j2'
     dest: '/etc/periodic.conf'
 
+- name: Install zfs-peridic package
+  pkgng:
+    name: 'zfs-periodic'
+    state: present
+
 - name: Create entry in crontab to create hourly snapshots
   cron:
     name: 'hourly-sfs-snapshot'
