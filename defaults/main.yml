@@ -6,6 +6,7 @@ host_net_int_net: '10.1.0.1/24'
 host_net_ext_if: '{{ ansible_default_ipv4.interface }}'
 host_net_ext_ip: '{{ ansible_default_ipv4.address }}'
 
+host_hostname: 'amnesiac'
 host_timezone: 'Europe/Berlin'
 host_sshd_user: 'vagrant'
 host_sshd_port: 22

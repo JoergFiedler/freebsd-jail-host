@@ -10,3 +10,6 @@
   command: ifconfig {{ host_net_int_if }} inet alias {{ host_net_int_ip }} netmask 255.255.255.255
   when: internal_ip|changed
 
+- name: Set hostname
+  hostname:
+    name: '{{ host_hostname }}'
