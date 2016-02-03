@@ -36,7 +36,7 @@
     name: 'tarsnapper'
     minute: '15'
     hour: '*'
-    job: '/usr/local/bin/tarsnapper -c /usr/local/etc/tarsnapper.yml make'
+    job: 'PATH=$PATH:/usr/local/bin /usr/local/bin/tarsnapper -c /usr/local/etc/tarsnapper.yml make'
 
 - name: Copy backup config for home directory
   copy:
