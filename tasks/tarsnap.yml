@@ -48,3 +48,7 @@
     src: '901.tarsnap'
     dest: '/usr/local/etc/periodic/weekly/901.tarsnap'
     mode: 0755
+
+- name: Run fsck
+  command: /usr/local/bin/tarsnap --fsck
+  changed_when: false
