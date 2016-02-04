@@ -2,7 +2,7 @@
 - name: Update comment for root user in user database
   user: name=root
         password=*
-        comment='root .at {{ ansible_fqdn }}'
+        comment='root .at {{ host_hostname }}'
 
 - name: Add sudo rules for ssh user on jail host
   template: src=sudoers.user.p2
