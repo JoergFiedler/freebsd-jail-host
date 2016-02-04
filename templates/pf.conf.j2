@@ -1,5 +1,6 @@
 ext_if="{{ host_net_ext_if }}"
 ext_ip="{{ host_net_ext_ip }}"
+icmp_types="{ 0, 3, 4, 8, 11 }"
 
 sshd_port={{ host_sshd_port }}
 
@@ -43,3 +44,5 @@ pass out quick log on $ext_if proto udp from $ext_ip to any port ntp
 anchor rls-jail
 load anchor rls-jail from "/etc/pf.anchor.rls-jail.conf"
 
+# ICMP
+pass inet proto icmp all icmp-type $icmp_types queue icmp label "ICMP"
