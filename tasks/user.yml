@@ -8,3 +8,18 @@
   template: src=sudoers.user.p2
             dest=/usr/local/etc/sudoers.d/{{ host_sshd_user }}
             validate='visudo -cf %s'
+
+- name: Create .ssh directry for ssh user
+  file:
+    path: '/home/{{ host_sshd_user }}/.ssh'
+    owner: '{{ host_sshd_user }}'
+    group: '{{ host_sshd_user }}'
+    mode: 0700
+    state: directory
+
+- name: Copy authorized keys file
+  copy:
+    src: '{{ host_sshd_authorized_keys_file }}'
+    dest: '/home/{{ host_sshd_user }}/.ssh/authorized_keys'
+    owner: '{{ host_sshd_user }}'
+    group: '{{ host_sshd_user }}'
