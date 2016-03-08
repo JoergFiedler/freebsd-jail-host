@@ -48,9 +48,9 @@ The user name allowed to access this server via ssh. Default: `vagrant`.
 
 The port sshd listens on. Default: `22`.
 
-##### host_sshd_pub_key
+##### host_sshd_authorized_keys_file
 
-The user's public key used for ssh authentication. Defaults to vagrant insecure public key: `'ssh-rsa AAAAB3NzaC1yc2E…'`
+The file that contains the public keys used to authenticate the sshd user. Defaults to vagrant insecure public key: `'vagrant_pub_key'`
 
 ##### host_home_zpool_name
 
