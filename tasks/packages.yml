@@ -1,4 +1,7 @@
 ---
+- name: Update pkg
+  command: pkg upgrade -y pkg
+
 - name: Install additional packages
   pkgng: name={{ item }}
          state=present

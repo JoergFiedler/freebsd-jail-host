@@ -8,6 +8,9 @@
 - include: sshd.yml
   tags:
     - host
+- include: packages.yml
+  tags:
+    - host
 - include: zpool.yml
   tags:
     - host
@@ -18,9 +21,6 @@
   tags:
     - host
 - include: timezone.yml
-  tags:
-    - host
-- include: packages.yml
   tags:
     - host
 - include: ssmtp.yml
