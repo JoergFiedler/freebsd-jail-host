@@ -1,6 +1,7 @@
 ---
 - name: Update pkg
   command: pkg upgrade -y pkg
+  changed_when: false
 
 - name: Install additional packages
   pkgng: name={{ item }}

@@ -9,8 +9,9 @@
 
 - name: Fetch FreeBSD release
   command: /usr/local/sbin/iocage fetch \
-           release="{{ host_ioc_release_version }}" \
-           ftpfiles="base.txz src.txz doc.txz"
+           ftphost='{{ host_ioc_ftphost }}'
+           release='{{ host_ioc_release_version }}' \
+           ftpfiles='base.txz src.txz doc.txz'
            creates='{{ host_ioc_releases_dir }}/{{ host_ioc_release_version }}'
 
 - name: Enable iocage service
