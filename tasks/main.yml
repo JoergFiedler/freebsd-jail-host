@@ -30,7 +30,7 @@
   tags:
     - host
 - include: tarsnap.yml
-  when: tarsnap_keyfile is defined
+  when: tarsnap_enabled
   tags:
     - host
 

@@ -20,6 +20,8 @@ host_srv_dataset: 'tank/srv'
 host_srv_zpool_name: 'tank'
 host_ioc_release_version: '10.2-RELEASE'
 
+tarsnap_enabled: false
+
 ssmtp_root: 'freebsd-ansible-demo'
 ssmtp_rewrite_domain: 'maildrop.cc'
 ssmtp_mailhub: 'mail.maildrop.cc'
@@ -34,3 +36,5 @@ ntp_servers:
   - '1.de.pool.ntp.org'
   - '2.de.pool.ntp.org'
   - '3.de.pool.ntp.org'
+
+
