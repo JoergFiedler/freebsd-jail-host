@@ -15,6 +15,7 @@
   copy:
     src: '{{ tarsnap_keyfile }}'
     dest: '/root/tarsnap.key'
+  register: keyfile_created
 
 - name: Create tarsnapper config directory
   file:
@@ -52,3 +53,4 @@
 - name: Run tarsnap fsck
   command: /usr/local/bin/tarsnap --fsck
   changed_when: false
+  when: keyfile_created|changed
