@@ -1,5 +1,5 @@
 {% for ntp_server in ntp_servers %}
-server {{ ntp_server }}
+pool {{ ntp_server }}
 {% endfor %}
 
 restrict default ignore
