@@ -6,5 +6,5 @@
 - name: Reload pf
   service: name=pf state=reloaded
 
-- name: Reload sshd
+- name: Reload host sshd
   service: name=sshd state=reloaded

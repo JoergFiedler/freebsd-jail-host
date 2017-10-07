@@ -1,19 +1,22 @@
 ---
 - name: Install iocage
-  pkgng: name=iocage
-         state=present
+  pkgng:
+    name: py36-iocage
+    state: present
 
 - name: Mark zpool for iocage usage
-  command: /usr/local/sbin/iocage activate {{ host_ioc_zpool_name }}
+  command: /usr/local/bin/iocage activate {{ host_ioc_zpool_name }}
   changed_when: false
 
 - name: Fetch FreeBSD release
-  command: /usr/local/sbin/iocage fetch \
-           ftphost='{{ host_ioc_ftphost }}'
-           release='{{ host_ioc_release_version }}' \
-           ftpfiles='base.txz src.txz doc.txz'
-           creates='{{ host_ioc_releases_dir }}/{{ host_ioc_release_version }}'
+  command: /usr/local/bin/iocage fetch \
+           -s '{{ host_ioc_ftphost }}' \
+           -r '{{ host_ioc_release_version }}' \
+           -F base.txz src.txz doc.txz
+  args:
+    creates: '{{ host_ioc_releases_dir }}/{{ host_ioc_release_version }}'
 
 - name: Enable iocage service
-  service: name=iocage
-           enabled=true
+  service:
+    name: iocage
+    enabled: true

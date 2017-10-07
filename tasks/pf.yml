@@ -1,33 +1,37 @@
 ---
 - name: Copy pf.conf
   template:
-    src: pf.conf.j2
-    dest: /etc/pf.conf
-    mode: 0644
+    src: 'pf.conf.j2'
+    dest: '/etc/pf.conf'
+    mode: '0644'
   notify:
     - Reload pf
 
 - name: Ensure nat jails definition file exists
-  command: touch /etc/pf.table.nat-jails
-    creates=/etc/pf.table.nat-jails
+  command: 'touch /etc/pf.table.nat-jails'
+  args:
+    creates: '/etc/pf.table.nat-jails'
   notify:
     - Reload pf
 
 - name: Ensure nat jail rules definition file exists
-  command: touch /etc/pf.anchor.nat-jail.conf
-    creates=/etc/pf.anchor.nat-jail.conf
+  command: 'touch /etc/pf.anchor.nat-jail.conf'
+  args:
+    creates: '/etc/pf.anchor.nat-jail.conf'
   notify:
     - Reload pf
 
 - name: Ensure rdr jail rules definition file exists
-  command: touch /etc/pf.anchor.rdr-jail.conf
-    creates=/etc/pf.anchor.rdr-jail.conf
+  command: 'touch /etc/pf.anchor.rdr-jail.conf'
+  args:
+    creates: '/etc/pf.anchor.rdr-jail.conf'
   notify:
     - Reload pf
 
 - name: Ensure rls jail rules definition file exists
-  command: touch /etc/pf.anchor.rls-jail.conf
-    creates=/etc/pf.anchor.rls-jail.conf
+  command: 'touch /etc/pf.anchor.rls-jail.conf'
+  args:
+    creates: '/etc/pf.anchor.rls-jail.conf'
   notify:
     - Reload pf
 
