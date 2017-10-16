@@ -1,4 +1,4 @@
-https://travis-ci.org/JoergFiedler/freebsd-jail-host.svg?branch=master
+[![Build Status](https://travis-ci.org/JoergFiedler/freebsd-jail-host.svg?branch=master)](https://travis-ci.org/JoergFiedler/freebsd-jail-host)
 
 freebsd-jail-host
 =================
@@ -191,19 +191,19 @@ Example Playbook
 
 Playbook example with overridden defaults to use this role to setup a EC2 instance.
 
----
+    ---
     - hosts: all
       become: true
-    
+
       vars:
         host_build_server_url: 'http://vastland.moumantai.de/FreeBSD/packages/freebsd-11_1_x64-HEAD'
-    
+
         ssmtp_auth_pass: 'mail.maildrop.cc'
         ssmtp_auth_user: 'mail.maildrop.cc'
         ssmtp_mailhub: 'mail.maildrop.cc'
         ssmtp_rewrite_domain: 'maildrop.cc'
         ssmtp_root: 'freebsd-ansible-demo'
-    
+
         ansible_python_interpreter: '/usr/local/bin/python2.7'
 
       roles:
