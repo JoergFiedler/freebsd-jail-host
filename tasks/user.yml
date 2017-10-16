@@ -1,13 +1,15 @@
 ---
 - name: Update comment for root user in user database
-  user: name=root
-        password=*
-        comment='root .at {{ host_hostname }}'
+  user:
+    name: 'root'
+    password: '*'
+    comment: 'root .at {{ host_hostname }}'
 
 - name: Add sudo rules for ssh user on jail host
-  template: src=sudoers.user.p2
-            dest=/usr/local/etc/sudoers.d/{{ host_sshd_user }}
-            validate='visudo -cf %s'
+  template:
+    src: 'sudoers.user.j2'
+    dest: '/usr/local/etc/sudoers.d/{{ host_sshd_user }}'
+    validate: 'visudo -cf %s'
 
 - name: Create .ssh directry for ssh user
   file:

@@ -1,0 +1,8 @@
+poudriere: {
+    url: "{{ host_build_server_url }}",
+    mirror_type: "pkg+https",
+    signature_type: "pubkey",
+    pubkey: "/usr/local/etc/ssl/poudriere.pub",
+    enabled: {{ host_build_server_enabled }},
+    priority: 100
+}

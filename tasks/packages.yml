@@ -1,10 +1,11 @@
 ---
 - name: Update pkg
-  command: pkg upgrade -y pkg
+  command: 'pkg upgrade -y pkg'
   changed_when: false
 
 - name: Install additional packages
-  pkgng: name={{ item }}
-         state=present
+  pkgng:
+    name: '{{ item }}'
+    state: present
   with_items:
   - tmux

@@ -1,0 +1,29 @@
+language: python
+python: 2.7
+sudo: false
+install:
+- pip install ansible==2.4.0
+- pip install netaddr
+- sudo apt-get install ruby
+- sudo apt-get install openssl
+
+before_script:
+- wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
+- dpkg -x vagrant_1.8.1_x86_64.deb /tmp/vagrant
+- export PATH=${PATH}:/tmp/vagrant/opt/vagrant/bin
+- vagrant plugin install vagrant-aws
+- ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
+- ln -s ./ JoergFiedler.freebsd-jail-host
+
+script:
+- vagrant box add JoergFiedler/FreeBSD-11.1 --provider aws
+- vagrant up --provider aws
+- vagrant ssh -c "iocage list -h"
+
+after_script:
+- vagrant destroy -f
+
+env:
+  global:
+  - secure: c9WuvrzfBm5I6xiYwO2lSKoCeulZcl2+aXqU7LrlQ63Q9hmg+GTzb4eH24Ib/gIyUGT57h6VOCvHQ9jyoXHEfioBcVBEPLKuS+YqhIDB9U8vx+QfvcQA+2BuElr4ogAe9J96DQwZbzSJSJz7dWfyaKGBmnGUyOmAMmsT9jYy4z2dYJj8O8duGZMMyOXuVC7+ZwyjOTETnQ6K3Ml6kf3phkw/tD2cLTAaXsTVPCIW0LmTU9jTUj+etC7EkF6A3v1VXl/QoR6UnmF8M8KilhvoHmk1Xbm+WZ340xAJjtnfOit3TCsVWlj/pAZdLehfvvU6Srgqa0TShkN7J1Zbktambza//PuET68Lk14thcn5m+Max7b6Q6uHlaxL8m3iN6ny9ZSVhXyNz6Na9hlrGaDRTQ+L4uc+w3dgMZjfsoI5H2EudWHYsuxfr0BbCkVjJnFSuykP2wMNBz0dBaIMPAczGClSz2i/bDO+httWwJ3j4Yaf0I5+KPK6Kq87yOLWhygkPiHqa7II7Z4mwYUMXCAoF5WmlghtF1cnfO7ogcnmQ6l7YEigJGoZVTpv4zxY80z8OF02g2Ngj/G5DqM6UFLqF2Mrb2AVzEzfWTSn9eVAOp00ZmLXVVG4RLOn/B4IcKdfTkrJAa0jMDqIS4biwf0gS3UhWIvbH6HhzizY+2sZjG4=
+  - secure: vvJ8n1UKI0uusbg63rLn100HpTlawyCqYE9em/H78mnn8dy4E2ZXChM+oy1oaPFt5y160U9B4EtAdKo7x82jBnzpJMnaRyqpCVpAEmIdsxnQKISglQu+4vnO44BL2JnSNMonzkSj7Ru5ClkHM3epRsMEC04qGxNchFjgw8tZqoypzINeAgyeGlpFD35f/AV7bCsEvYEWGS5MpDatul3DGVY06SNfQPk2xWS2MPpBApDzoleUtAVPVHcrR5mBCzyLRQT5/KwvBQ319Qxo6gomM08gy0+PIVjXzowh0t14AWc7bgvjKaCGYsKZFD/m7YI1lczcaWvZaX9YrMubLs6x9HXqrn7wMnu6gVpWoSNRUipVt6gTqrejSuoOsWnMPebqO/S5ScoISt/Zp9ldI4ut2aonkS3pemL0cXVrbdxJuoIeiMPzzc5/9O+yG06tdsqWxZxhSaZ3GDB0FO6yn42fcp/CjLhJBnVYeGUJRwcI1AsalURTZ+49empGTYMSezSAb5WmorMX5tEaqTh/boTtwK+PdauipO/ZVHjYbY2QifR2bAaOCoIOtjhMfXCzgzdGs5gKneJbMYK7d6NUNNF+6y0QDIsDd3+Z8liPXOqfC+ngTcnQ9SsZiK5hDnjZ2hZp5PJRYKunRM3DulUPOS0gUObNz72FMVC7UIjKPZxyKFQ=

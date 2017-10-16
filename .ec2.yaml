@@ -1,0 +1,11 @@
+---
+# ec2 specific settings
+
+host_ioc_zpool_devices: 'xbd5' # device settings used when creating the pool
+host_srv_zpool_devices: 'xbd5' # device settings used when creating the pool
+
+host_sshd_user: 'ec2-user'
+
+host_build_server_enabled: true
+host_build_server_pubkey: 'poudriere.pub'
+host_build_server_url: 'http://vastland.moumantai.de/FreeBSD/packages/freebsd-11_1_x64-HEAD'

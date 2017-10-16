@@ -1,34 +1,36 @@
 ---
 - name: Ensure ZFS is started
-  service: name=zfs
-           enabled=yes
-           state=started
+  service:
+    name: 'zfs'
+    enabled: yes
+    state: started
 
 - name: Check if ioc zpool exists
-  command: zpool status {{ host_ioc_zpool_name }}
+  command: 'zpool status {{ host_ioc_zpool_name }}'
   register: ioc_zpool_status
   ignore_errors: yes
   changed_when: false
 
 - name: Create ioc zpool
-  command: zpool create {{ host_ioc_zpool_name }} {{ host_ioc_zpool_devices }}
+  command: 'zpool create {{ host_ioc_zpool_name }} {{ host_ioc_zpool_devices }}'
   when: "'no such pool' in ioc_zpool_status.stderr"
 
 - name: Check if srv zpool exists
-  command: zpool status {{ host_srv_zpool_name }}
+  command: 'zpool status {{ host_srv_zpool_name }}'
   register: srv_zpool_status
   ignore_errors: yes
   changed_when: false
 
 - name: Create srv zpool
-  command: zpool create {{ host_srv_zpool_name }} {{ host_srv_zpool_devices }}
+  command: 'zpool create {{ host_srv_zpool_name }} {{ host_srv_zpool_devices }}'
   when: "'no such pool' in srv_zpool_status.stderr"
 
 - name: Create srv dataset
-  zfs:  name={{ host_srv_dataset }}
-        state=present
-        atime=off
-        mountpoint={{ host_srv_dir }}
+  zfs:
+    name: '{{ host_srv_dataset }}'
+    state: present
+    atime: off
+    mountpoint: '{{ host_srv_dir }}'
 
 - name: Copy periodic conf for regular snapshots
   template:

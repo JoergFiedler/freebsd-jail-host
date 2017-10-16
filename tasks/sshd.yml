@@ -1,7 +1,7 @@
 ---
 - name: Adjust sshd (allowed user, authentication, ..)
   lineinfile:
-    dest: /etc/ssh/sshd_config
+    dest: '/etc/ssh/sshd_config'
     state: present
     regexp: '{{ item.regexp }}'
     line: '{{ item.line }}'
@@ -20,4 +20,4 @@
   - { regexp: '^UsePAM', line: 'UsePAM no' }
   - { regexp: '^ClientAliveInterval', line: 'ClientAliveInterval 30' }
   notify:
-    - Reload sshd
+    - Reload host sshd

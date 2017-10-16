@@ -1,35 +1,38 @@
 ---
-- include: net.yml
+- import_tasks: net.yml
   tags:
     - host
-- include: pf.yml
+- import_tasks: pf.yml
   tags:
     - host
-- include: sshd.yml
+- import_tasks: sshd.yml
   tags:
     - host
-- include: packages.yml
+- import_tasks: repo.yml
   tags:
     - host
-- include: zpool.yml
+- import_tasks: packages.yml
   tags:
     - host
-- include: iocage.yml
+- import_tasks: zpool.yml
   tags:
     - host
-- include: user.yml
+- import_tasks: iocage.yml
   tags:
     - host
-- include: timezone.yml
+- import_tasks: user.yml
   tags:
     - host
-- include: ssmtp.yml
+- import_tasks: timezone.yml
   tags:
     - host
-- include: ntp.yml
+- import_tasks: ssmtp.yml
   tags:
     - host
-- include: tarsnap.yml
+- import_tasks: ntp.yml
+  tags:
+    - host
+- import_tasks: tarsnap.yml
   when: tarsnap_enabled
   tags:
     - host

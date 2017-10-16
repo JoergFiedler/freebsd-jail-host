@@ -1,0 +1,32 @@
+---
+- name: Create directory which will hold build repo conf
+  file:
+    path: '/usr/local/etc/pkg/repos'
+    state: directory
+
+- name: Create directory which will hold build server key
+  file:
+    path: '/usr/local/etc/ssl'
+    state: directory
+
+- name: Copy build server key
+  copy:
+    src: '{{ host_build_server_pubkey }}'
+    dest: '/usr/local/etc/ssl/poudriere.pub'
+  when: host_build_server_enabled
+
+- name: Install build server repo
+  template:
+    src: 'poudriere.conf.j2'
+    dest: '/usr/local/etc/pkg/repos/poudriere.conf'
+  register: build_server_repo
+  when: host_build_server_enabled
+
+- name: Update build server repo data
+  command: 'pkg update'
+  when: build_server_repo | changed
+
+- name: Install root certificate authorities
+  pkgng:
+    name: 'ca_root_nss'
+    state: present
