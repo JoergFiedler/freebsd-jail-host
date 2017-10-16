@@ -209,11 +209,6 @@ Playbook example with overridden defaults to use this role to setup a EC2 instan
       roles:
         - role: 'JoergFiedler.freebsd-jail-host'
 
-License
--------
-
-BSD
-
 Author Information
 ------------------
 
