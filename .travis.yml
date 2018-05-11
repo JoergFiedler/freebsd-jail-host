@@ -11,7 +11,6 @@ install:
 - pip install netaddr
 
 before_script:
-- export PATH=${PATH}:/tmp/vagrant/opt/vagrant/bin
 - vagrant plugin install vagrant-aws
 - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
 - ln -s ./ JoergFiedler.freebsd-jail-host
