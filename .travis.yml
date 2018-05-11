@@ -5,12 +5,12 @@ language: python
 python: 2.7
 
 install:
+- wget https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb
+- sudo dpkg -i vagrant_1.9.7_x86_64.deb
 - pip install ansible==2.4.0
 - pip install netaddr
 
 before_script:
-- wget https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb
-- dpkg -x vagrant_1.9.7_x86_64.deb /tmp/vagrant
 - export PATH=${PATH}:/tmp/vagrant/opt/vagrant/bin
 - vagrant plugin install vagrant-aws
 - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
