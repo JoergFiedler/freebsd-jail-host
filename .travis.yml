@@ -4,8 +4,7 @@ sudo: false
 install:
 - pip install ansible==2.4.0
 - pip install netaddr
-- sudo apt-get install ruby
-- sudo apt-get install openssl
+- sudo apt-get install -y ruby openssl libxml2-dev libxslt1-dev
 
 before_script:
 - wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
