@@ -17,7 +17,7 @@ host_sshd_authorized_keys_file: 'vagrant_pub_key'
 
 host_ioc_dir: '/iocage'
 host_ioc_zpool_name: 'tank'
-host_ioc_ftphost: 'ftp.freebsd.org'
+host_ioc_host: 'download.freebsd.org'
 host_srv_dir: '/srv'
 host_srv_zpool_name: 'tank'
 host_srv_dataset: '{{ host_srv_zpool_name }}/srv'

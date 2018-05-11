@@ -10,7 +10,8 @@
 
 - name: Fetch FreeBSD release
   command: /usr/local/bin/iocage fetch \
-           -s '{{ host_ioc_ftphost }}' \
+           -s '{{ host_ioc_host }}' \
+           -h \
            -r '{{ host_ioc_release_version }}' \
            -F base.txz src.txz doc.txz
   args:
