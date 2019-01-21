@@ -13,9 +13,9 @@ inside a jail.
 Requirements 
 ------------
  
-This role is intent to be used with a fresh FreeBSD 11.1 installation. There is
-a [Vagrant Box](https://app.vagrantup.com/JoergFiedler/boxes/freebsd-11.1/) with
-providers for VirtualBox and AWS.
+This role is intent to be used with a fresh FreeBSD installation. There is a
+[Vagrant Box](https://app.vagrantup.com/JoergFiedler) with providers for
+VirtualBox and AWS.
 
 HowTo
 =====
@@ -24,7 +24,7 @@ This project contains a `Vagrantfile`. Type
 
     vagrant up
     
-and you will have a clean FreeBSD machine up and running. You may now create
+and you will enjoy a clean FreeBSD machine up and running. You may now create
 jails manually or use one of the other roles I created.
 
 Role Variables
@@ -150,12 +150,12 @@ Uses TLS when talking to SMTP server. Default: `'no'`.
 
 ##### tarsnap_enabled
 
-Set this to true to use tarsnap for backup. Default: `false`.
+Set this to `yes` to use tarsnap for backup. Default: `no`.
 
 ##### tarsnap_keyfile
 
 The keyfile to use to backup using tarsnap. See tarsnap documentation how to
-create one. Default: None.
+create one. Default: ''.
 
 
 ### Package Repository
@@ -163,7 +163,7 @@ create one. Default: None.
 ##### host_build_server_enabled
 
 Create an additional repository in `/usr/local/etc/pkg/repos/` using the URL and
-public key provided by the following two variables. Default: `false`.
+public key provided by the following two variables. Default: `no`.
 
 ##### host_build_server_pubkey
 
@@ -191,7 +191,6 @@ Example Playbook
 
 Playbook example with overridden defaults to use this role to setup a EC2 instance.
 
-    ---
     - hosts: all
       become: true
 

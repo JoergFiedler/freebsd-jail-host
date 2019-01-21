@@ -1,29 +1,22 @@
-dist: trusty
-sudo: false
-
+dist: xenial
 language: python
 python: 2.7
-
 install:
-- wget https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb
-- sudo dpkg -i vagrant_1.9.7_x86_64.deb
-- pip install ansible==2.4.0
+- wget https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
+- sudo dpkg -i vagrant_2.2.2_x86_64.deb
+- pip install ansible==2.7.0
 - pip install netaddr
-
 before_script:
 - vagrant plugin install vagrant-aws
 - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
 - ln -s ./ JoergFiedler.freebsd-jail-host
-
 script:
-- vagrant box add JoergFiedler/FreeBSD-11.1 --provider aws
+- vagrant box add JoergFiedler/FreeBSD-11.2 --provider aws
 - vagrant up --provider aws
 - vagrant ssh -c "iocage list -h"
-
 after_script:
 - vagrant destroy -f
-
 env:
   global:
-  - secure: c9WuvrzfBm5I6xiYwO2lSKoCeulZcl2+aXqU7LrlQ63Q9hmg+GTzb4eH24Ib/gIyUGT57h6VOCvHQ9jyoXHEfioBcVBEPLKuS+YqhIDB9U8vx+QfvcQA+2BuElr4ogAe9J96DQwZbzSJSJz7dWfyaKGBmnGUyOmAMmsT9jYy4z2dYJj8O8duGZMMyOXuVC7+ZwyjOTETnQ6K3Ml6kf3phkw/tD2cLTAaXsTVPCIW0LmTU9jTUj+etC7EkF6A3v1VXl/QoR6UnmF8M8KilhvoHmk1Xbm+WZ340xAJjtnfOit3TCsVWlj/pAZdLehfvvU6Srgqa0TShkN7J1Zbktambza//PuET68Lk14thcn5m+Max7b6Q6uHlaxL8m3iN6ny9ZSVhXyNz6Na9hlrGaDRTQ+L4uc+w3dgMZjfsoI5H2EudWHYsuxfr0BbCkVjJnFSuykP2wMNBz0dBaIMPAczGClSz2i/bDO+httWwJ3j4Yaf0I5+KPK6Kq87yOLWhygkPiHqa7II7Z4mwYUMXCAoF5WmlghtF1cnfO7ogcnmQ6l7YEigJGoZVTpv4zxY80z8OF02g2Ngj/G5DqM6UFLqF2Mrb2AVzEzfWTSn9eVAOp00ZmLXVVG4RLOn/B4IcKdfTkrJAa0jMDqIS4biwf0gS3UhWIvbH6HhzizY+2sZjG4=
-  - secure: vvJ8n1UKI0uusbg63rLn100HpTlawyCqYE9em/H78mnn8dy4E2ZXChM+oy1oaPFt5y160U9B4EtAdKo7x82jBnzpJMnaRyqpCVpAEmIdsxnQKISglQu+4vnO44BL2JnSNMonzkSj7Ru5ClkHM3epRsMEC04qGxNchFjgw8tZqoypzINeAgyeGlpFD35f/AV7bCsEvYEWGS5MpDatul3DGVY06SNfQPk2xWS2MPpBApDzoleUtAVPVHcrR5mBCzyLRQT5/KwvBQ319Qxo6gomM08gy0+PIVjXzowh0t14AWc7bgvjKaCGYsKZFD/m7YI1lczcaWvZaX9YrMubLs6x9HXqrn7wMnu6gVpWoSNRUipVt6gTqrejSuoOsWnMPebqO/S5ScoISt/Zp9ldI4ut2aonkS3pemL0cXVrbdxJuoIeiMPzzc5/9O+yG06tdsqWxZxhSaZ3GDB0FO6yn42fcp/CjLhJBnVYeGUJRwcI1AsalURTZ+49empGTYMSezSAb5WmorMX5tEaqTh/boTtwK+PdauipO/ZVHjYbY2QifR2bAaOCoIOtjhMfXCzgzdGs5gKneJbMYK7d6NUNNF+6y0QDIsDd3+Z8liPXOqfC+ngTcnQ9SsZiK5hDnjZ2hZp5PJRYKunRM3DulUPOS0gUObNz72FMVC7UIjKPZxyKFQ=
+  - secure: cx6vOUlmVyc7IUmR/TVK/gBL8xoV44hUTBIy207Yf3Uif1BpbjBsYspE6dAUuBF21lPTKJ2vhnLuoM7ImwzjDsNGXuhw5KuswDxxvJgQlu/GAHEy6SsYHIO7o0mFBE7EF7TRbskGf7VnP9hbec+oTuVxX8ASPK1ACtK3S6QS4hOIhNjGwpLwhnvqCJbRjeZirmbtw8upS5Cy4NzIzVwmZz0DK4mIRszZ+joYPvMMeK/58Im82xrWkYpjc9DEowOYsz7FH6pz4tUeVET7o30siwyaFS5FM/GNXa6aNo2ZnpBAleM1JpWiogwoTQxPGUOjcH7R1QPeNgTGNRA8rjsixkgkBljYLRPTuEwCSko5AEMscbNhDBnqWC6AAQ+ItR2Ba/cBxEHAlUhDPI03mpd0NOq51nAsNN0al0kNx5AqvNlQNUSyRyggUNBOtGGlmwu6Lu0v3zbdkusnL8qQ37twyzfMVNOF7LLEpOwzHYgozcGmQa51njFdU8khgfJIzvDcvRreO52Mgl9FJGqOUZHmUMyhztjJ19Aqtr8NV8wfJ+UDn65y7tIy+T2Gn05I0WfJWamBGj1oD3o5PHQsE7H6bcNFmNccC2rzpmNLMd2GB9TTCrlqwlIpg8wYMrmvdTGYuvZlBULS5Pd2NH+ze24tgDogIMV1hIueNn18LBkHrrU=
+  - secure: E44y1oSIE2hl9sXPdTdB/xSUQ014/UYILHiNTqhT9stWMWLFweaC8GB0h3AyS7f1VJK9ALthz/iG/D+yEYBz5aj/ZygKcnmOrz6RpXKztwkwA+O9Kf4KP+BfJPeflvJ4jolRclIeMyiv+LtUoAIxuAwIkrJoRQaTkNP9uqgvPco+7NBMKrzJW1ncpS1MUfbq5bQ/NJdZCfy58usOb8AMPZakoG8GcaOlE9y2zyzHYRnImlckW6p7QQYl2Mi8J5gBvIxqprlrbCXVk9862BGyFvL6YEf3BIHqvYIR4l6Vm7/dY2bXDN2uzDYPkz1kb+Pw7F65uuBA+DXqWnAc1702dbAFC1IO5gBtofAA56SjVySMM64vmr5W8yEIiSjI/xWVTc2X18O1BsTluf1mtPswfdZaiju67NOJyToRQ1bw7dojIxG/SDuL9I9Mzhr3d7cSgDjrgUzCr3M48IsVuVvEaOt8VU6JeRZYcjq7oYMF+PPWTZcTey6KXYcqbl+OrTy2+8ICppS2PyFexu+B2OqpD5+2lO/XSsEetahUT6mVtwlsoJab7FK/HDyqcyd+vPHnJOWyRVu7rsMApAAKEp023SjNUzQLlw/mzq8gCxHvhXZM80TqOsnb7ALP1Z5sDi4U7j3lCdhuftDySNL9LZVxfA4erYCkOOzOlv+tDRxAAtI=

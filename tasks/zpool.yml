@@ -1,4 +1,3 @@
----
 - name: Ensure ZFS is started
   service:
     name: 'zfs'
@@ -15,6 +14,14 @@
   command: 'zpool create {{ host_ioc_zpool_name }} {{ host_ioc_zpool_devices }}'
   when: "'no such pool' in ioc_zpool_status.stderr"
 
+- name: Create ioc dataset
+  zfs:
+    name: '{{ host_ioc_dataset }}'
+    state: present
+    extra_zfs_properties:
+      atime: off
+      mountpoint: '{{ host_ioc_dir }}'
+
 - name: Check if srv zpool exists
   command: 'zpool status {{ host_srv_zpool_name }}'
   register: srv_zpool_status
@@ -29,11 +36,13 @@
   zfs:
     name: '{{ host_srv_dataset }}'
     state: present
-    atime: off
-    mountpoint: '{{ host_srv_dir }}'
+    extra_zfs_properties:
+      atime: off
+      mountpoint: '{{ host_srv_dir }}'
 
 - name: Copy periodic conf for regular snapshots
   template:
+    backup: '{{ backup_old_files }}'
     src: 'periodic.conf.j2'
     dest: '/etc/periodic.conf'
 
@@ -44,6 +53,7 @@
 
 - name: Create entry in crontab to create hourly snapshots
   lineinfile:
+    backup: '{{ backup_old_files }}'
     dest: '/etc/crontab'
     line: '47      *       *       *       *       root    periodic hourly'
     insertafter: '^# Perform daily/weekly/monthly'

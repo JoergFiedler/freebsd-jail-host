@@ -1,4 +1,3 @@
----
 - name: Update comment for root user in user database
   user:
     name: 'root'
@@ -7,6 +6,7 @@
 
 - name: Add sudo rules for ssh user on jail host
   template:
+    backup: '{{ backup_old_files }}'
     src: 'sudoers.user.j2'
     dest: '/usr/local/etc/sudoers.d/{{ host_sshd_user }}'
     validate: 'visudo -cf %s'
@@ -21,6 +21,7 @@
 
 - name: Copy authorized keys file
   copy:
+    backup: '{{ backup_old_files }}'
     src: '{{ host_sshd_authorized_keys_file }}'
     dest: '/home/{{ host_sshd_user }}/.ssh/authorized_keys'
     owner: '{{ host_sshd_user }}'

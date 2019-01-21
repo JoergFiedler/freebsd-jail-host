@@ -1,4 +1,5 @@
 #!/bin/sh
+{{ ansible_managed | comment }}
 
 /usr/local/bin/tarsnap \
   --print-stats \

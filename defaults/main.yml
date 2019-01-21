@@ -1,38 +1,41 @@
----
 # defaults file for jail_host
+backup_old_files: yes
+
+host_net_ext_if: '{{ ansible_default_ipv4.interface }}'
+host_net_ext_ip: '{{ ansible_default_ipv4.address }}'
 host_net_int_if: 'lo0'
 host_net_int_ip: '10.1.0.1'
 host_net_int_net: '10.1.0.1/24'
-host_net_ext_if: '{{ ansible_default_ipv4.interface }}'
-host_net_ext_ip: '{{ ansible_default_ipv4.address }}'
 
 host_hostname: 'amnesiac'
 host_timezone: 'Europe/Berlin'
 
-host_build_server_enabled: false
+host_build_server_enabled: no
 
-host_sshd_user: 'vagrant'
-host_sshd_port: 22
 host_sshd_authorized_keys_file: 'vagrant_pub_key'
+host_sshd_port: 22
+host_sshd_user: 'vagrant'
 
+host_ioc_dataset: '{{ host_ioc_zpool_name }}/iocage'
 host_ioc_dir: '/iocage'
-host_ioc_zpool_name: 'tank'
 host_ioc_host: 'download.freebsd.org'
+host_ioc_release_version: '11.2-RELEASE'
+host_ioc_zpool_name: 'tank'
+host_srv_dataset: '{{ host_srv_zpool_name }}/srv'
 host_srv_dir: '/srv'
 host_srv_zpool_name: 'tank'
-host_srv_dataset: '{{ host_srv_zpool_name }}/srv'
-host_ioc_release_version: '11.1-RELEASE'
 
-ssmtp_root: 'freebsd-jail-host'
-ssmtp_rewrite_domain: 'maildrop.cc'
+ssmtp_auth_pass: ''
+ssmtp_auth_user: ''
 ssmtp_mailhub: 'mail.maildrop.cc'
 ssmtp_mailhub_port: '25'
-ssmtp_auth_user: ''
-ssmtp_auth_pass: ''
+ssmtp_rewrite_domain: 'maildrop.cc'
+ssmtp_root: 'freebsd-jail-host'
 ssmtp_use_starttls: 'no'
 ssmtp_use_tls: 'no'
 
-tarsnap_enabled: false
+tarsnap_enabled: no
+tarsnap_keyfile: ''
 
 ntp_servers:
   - '0.de.pool.ntp.org'

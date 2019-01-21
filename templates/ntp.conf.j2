@@ -1,3 +1,5 @@
+{{ ansible_managed | comment }}
+
 {% for ntp_server in ntp_servers %}
 pool {{ ntp_server }}
 {% endfor %}

@@ -2,13 +2,13 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = 'JoergFiedler/freebsd-11.1'
+  config.vm.box = 'JoergFiedler/freebsd-11.2'
   config.vm.synced_folder '.', '/vagrant', disabled: true
   config.ssh.insert_key = false
 
-  config.vm.define 'jail-host' do |btsync|
-    btsync.vm.provision 'ansible', type: 'ansible' do |ansible|
-      ansible.playbook = './.playbook.yaml'
+  config.vm.define 'jail-host' do |host|
+    host.vm.provision 'ansible', type: 'ansible' do |ansible|
+      ansible.playbook = './.playbook.yml'
     end
   end
 
@@ -33,21 +33,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     global.ssh.username = 'ec2-user'
 
     global.vm.provision 'ansible', type: 'ansible' do |ansible|
-      ansible.extra_vars = './.ec2.yaml'
+      ansible.extra_vars = './.ec2.yml'
     end
 
     aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
-    aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-    aws.ssh_host_attribute = :dns_name
-    aws.keypair_name = 'ec2-user'
-    aws.region = 'eu-west-1'
-    aws.user_data = "#!/bin/sh
-echo 'pass all keep state' >> /etc/pf.conf
-echo pf_enable=YES >> /etc/rc.conf
-echo pflog_enable=YES >> /etc/rc.conf
-echo 'firstboot_pkgs_list=\"awscli sudo bash python27\"' >> /etc/rc.conf
-mkdir -p /usr/local/etc/sudoers.d
-echo 'ec2-user ALL=(ALL) NOPASSWD: ALL' >> /usr/local/etc/sudoers.d/ec2-user"
+    aws.associate_public_ip = true
+    aws.instance_type = 't3.small'
     aws.block_device_mapping = [
         {
             'DeviceName' => '/dev/sda1',
@@ -62,6 +53,20 @@ echo 'ec2-user ALL=(ALL) NOPASSWD: ALL' >> /usr/local/etc/sudoers.d/ec2-user"
             'Ebs.DeleteOnTermination' => true
         }
     ]
+    aws.keypair_name = 'ec2-user'
+    aws.region = 'eu-west-1'
+    aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+    aws.security_groups = ['sg-1d29f478']
+    aws.ssh_host_attribute = :dns_name
+    aws.subnet_id = 'subnet-cf3beaaa'
     aws.terminate_on_shutdown = true
+    aws.user_data = "#!/bin/sh
+echo 'pass all keep state' >> /etc/pf.conf
+echo pf_enable=YES >> /etc/rc.conf
+echo pflog_enable=YES >> /etc/rc.conf
+echo 'firstboot_pkgs_list=\"awscli sudo bash python27\"' >> /etc/rc.conf
+mkdir -p /usr/local/etc/sudoers.d
+/usr/sbin/service pf start
+echo 'ec2-user ALL=(ALL) NOPASSWD: ALL' >> /usr/local/etc/sudoers.d/ec2-user"
   end
 end

@@ -1,9 +1,8 @@
----
 - name: Install additional packages
   pkgng:
     name: '{{ item }}'
     state: present
-  with_items:
+  loop:
     - tarsnap
     - py27-pip
 
@@ -13,6 +12,7 @@
 
 - name: Copy tarsnap key file
   copy:
+    backup: '{{ backup_old_files }}'
     src: '{{ tarsnap_keyfile }}'
     dest: '/root/tarsnap.key'
   register: keyfile_created
@@ -24,11 +24,13 @@
 
 - name: Copy tarsnapper config
   template:
+    backup: '{{ backup_old_files }}'
     src: 'tarsnapper.yml.j2'
     dest: '/usr/local/etc/tarsnapper.yml'
 
 - name: Copy tarsnap config file
   template:
+    backup: '{{ backup_old_files }}'
     src: 'tarsnap.conf.j2'
     dest: '/usr/local/etc/tarsnap.conf'
 
@@ -41,16 +43,18 @@
 
 - name: Copy backup config for home directory
   copy:
+    backup: '{{ backup_old_files }}'
     src: 'host-home.yml'
     dest: '/usr/local/etc/tarsnapper.d/host-home.yml'
 
 - name: Copy weekly script
   copy:
+    backup: '{{ backup_old_files }}'
     src: '901.tarsnap'
     dest: '/usr/local/etc/periodic/weekly/901.tarsnap'
     mode: 0755
 
 - name: Run tarsnap fsck
-  command: /usr/local/bin/tarsnap --fsck
+  command: '/usr/local/bin/tarsnap --fsck'
   changed_when: false
-  when: keyfile_created|changed
+  when: keyfile_created is changed
