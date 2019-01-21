@@ -26,4 +26,3 @@
     state: present
     regexp: '^hostname='
     line: 'hostname="{{ host_hostname }}"'
-

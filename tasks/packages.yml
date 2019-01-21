@@ -8,3 +8,5 @@
     state: present
   loop:
     - tmux
+  register: pkg_result
+  until: pkg_result is succeeded

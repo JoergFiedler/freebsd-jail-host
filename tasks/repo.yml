@@ -31,3 +31,5 @@
   pkgng:
     name: 'ca_root_nss'
     state: present
+  register: pkg_result
+  until: pkg_result is succeeded

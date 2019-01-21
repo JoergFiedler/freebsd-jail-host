@@ -50,6 +50,8 @@
   pkgng:
     name: 'zfs-periodic'
     state: present
+  register: pkg_result
+  until: pkg_result is succeeded
 
 - name: Create entry in crontab to create hourly snapshots
   lineinfile:
@@ -58,4 +60,3 @@
     line: '47      *       *       *       *       root    periodic hourly'
     insertafter: '^# Perform daily/weekly/monthly'
     state: present
-

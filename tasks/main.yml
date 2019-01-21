@@ -35,4 +35,3 @@
   when: tarsnap_enabled
   tags:
     - host
-

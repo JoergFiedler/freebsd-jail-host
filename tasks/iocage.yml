@@ -2,6 +2,8 @@
   pkgng:
     name: 'py36-iocage'
     state: present
+  register: pkg_result
+  until: pkg_result is succeeded
 
 - name: Mark zpool for iocage usage
   command: /usr/local/bin/iocage activate {{ host_ioc_zpool_name }}

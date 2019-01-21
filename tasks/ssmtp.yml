@@ -2,6 +2,8 @@
   pkgng:
     name: 'ssmtp'
     state: present
+  register: pkg_result
+  until: pkg_result is succeeded
 
 - name: Copy ssmtp.conf into place
   template:
