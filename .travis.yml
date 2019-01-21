@@ -4,10 +4,7 @@ python: 2.7
 install:
 - wget https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
 - sudo dpkg -i vagrant_2.2.2_x86_64.deb
-- pip install ansible==2.7.0
-- pip install netaddr
-- pip install ansible-lint==4.0.1
-- pip install yamllint==1.14.0
+- pip install -r .requirements.txt
 before_script:
 - ansible-lint .
 - yamllint .
