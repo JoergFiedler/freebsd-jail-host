@@ -10,7 +10,7 @@ install:
 - pip install yamllint==1.14.0
 before_script:
 - ansible-lint .
-- yamllint defaults/ files/ handlers/ meta/ tasks/ vars/
+- yamllint .
 - vagrant plugin install vagrant-aws
 - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
 - ln -s ./ JoergFiedler.freebsd-jail-host

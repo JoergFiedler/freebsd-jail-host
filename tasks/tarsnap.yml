@@ -48,7 +48,7 @@
 - name: Copy backup config for home directory
   template:
     backup: '{{ backup_old_files }}'
-    src: 'host-home.yml'
+    src: 'host-home.yml.j2'
     dest: '/usr/local/etc/tarsnapper.d/host-home.yml'
 
 - name: Copy weekly script
