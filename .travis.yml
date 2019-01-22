@@ -6,12 +6,12 @@ install:
 - sudo dpkg -i vagrant_2.2.2_x86_64.deb
 - pip install -r .requirements.txt
 before_script:
-- ansible-lint .
-- yamllint .
 - vagrant plugin install vagrant-aws
 - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
 - ln -s ./ JoergFiedler.freebsd-jail-host
 script:
+- ansible-lint .
+- yamllint .
 - vagrant box add JoergFiedler/FreeBSD-11.2 --provider aws
 - vagrant up --provider aws
 - vagrant ssh -c "iocage list -h"
