@@ -14,5 +14,6 @@ galaxy_info:
   - iocage
   - cloud
   - ec2
+  - web
+  - system
 allow_duplicates: no
-dependencies: []
