@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/JoergFiedler/freebsd-jail-host.svg?branch=master)](https://travis-ci.org/JoergFiedler/freebsd-jail-host)
-
 freebsd-jail-host
 =================
+
+[![Build Status](https://travis-ci.org/JoergFiedler/freebsd-jail-host.svg?branch=master)](https://travis-ci.org/JoergFiedler/freebsd-jail-host)
 
 This role is used to create a FreeBSD system which in turn may be used to host
 one or more jails. There are roles for jails which may be used in combination
