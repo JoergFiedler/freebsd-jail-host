@@ -1,3 +1,5 @@
 # vars file for jail_host
 host_ioc_releases_dir: '{{ host_ioc_dir }}/releases'
 host_ioc_jails_dir: '{{ host_ioc_dir }}/jails'
+host_net_ext_ips: "{ {{ host_net_ext_ip }},{{ ansible_default_ipv4.address }} }"
+host_additional_ext_ip: '{{ host_net_ext_ip != ansible_default_ipv4.address }}'

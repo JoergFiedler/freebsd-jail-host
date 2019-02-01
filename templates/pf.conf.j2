@@ -1,7 +1,7 @@
 {{ ansible_managed | comment }}
 
 ext_if="{{ host_net_ext_if }}"
-ext_ip="{{ host_net_ext_ip }}"
+ext_ip="{{ host_net_ext_ips }}"
 icmp_types="{ 0, 3, 4, 8, 11 }"
 
 sshd_port={{ host_sshd_port }}
