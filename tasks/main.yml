@@ -31,6 +31,10 @@
 - import_tasks: ntp.yml
   tags:
     - host
+- import_tasks: syslogd-client.yml
+  tags:
+    - host
+  when: host_use_syslogd_server | default(false)
 - import_tasks: tarsnap.yml
   when: tarsnap_enabled
   tags:

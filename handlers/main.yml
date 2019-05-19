@@ -13,3 +13,8 @@
   service:
     name: 'sshd'
     state: reloaded
+
+- name: Reload syslogd
+  command: |
+    service syslogd reload
+

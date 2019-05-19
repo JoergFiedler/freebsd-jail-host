@@ -177,6 +177,14 @@ The additional repositories URL. Default: None.
 
 ### Misc
 
+##### host_use_syslogd_server
+
+Set to `true` to forward log messages written by local syslog to a syslog server within a jail. Use `host_syslogd_server` variable to specify ip address. Default: `false`
+
+##### host_syslogd_server
+
+The ip address of the syslog server to forward messages to. Should be running within one of the hosted jails. Default: ``
+
 ##### host_timezone
 
 The timezone the server is located. Default: `'Europe/Berlin'`.
