@@ -6,7 +6,8 @@
   until: pkg_result is succeeded
 
 - name: Mark zpool for iocage usage
-  command: /usr/local/bin/iocage activate {{ host_ioc_zpool_name }}
+  command: |
+    /usr/local/bin/iocage activate {{ host_ioc_zpool_name }}
   changed_when: false
 
 - name: Fetch FreeBSD release
