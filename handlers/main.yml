@@ -15,6 +15,6 @@
     state: reloaded
 
 - name: Reload syslogd
-  command: |
-    service syslogd reload
-
+  service:
+    name: 'syslogd'
+    state: reloaded
