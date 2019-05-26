@@ -4,7 +4,7 @@
     state: present
   loop:
     - tarsnap
-    - py27-pip
+    - py36-pip
   register: pkg_result
   until: pkg_result is succeeded
 
