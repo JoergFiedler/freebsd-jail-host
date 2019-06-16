@@ -1,41 +1,15 @@
-- import_tasks: net.yml
-  tags:
-    - host
-- import_tasks: pf.yml
-  tags:
-    - host
-- import_tasks: sshd.yml
-  tags:
-    - host
-- import_tasks: repo.yml
-  tags:
-    - host
-- import_tasks: packages.yml
-  tags:
-    - host
-- import_tasks: zpool.yml
-  tags:
-    - host
 - import_tasks: iocage.yml
-  tags:
-    - host
-- import_tasks: user.yml
-  tags:
-    - host
-- import_tasks: timezone.yml
-  tags:
-    - host
-- import_tasks: ssmtp.yml
-  tags:
-    - host
+- import_tasks: net.yml
 - import_tasks: ntp.yml
-  tags:
-    - host
+- import_tasks: packages.yml
+- import_tasks: pf.yml
+- import_tasks: repo.yml
+- import_tasks: sshd.yml
+- import_tasks: ssmtp.yml
 - import_tasks: syslogd-client.yml
-  tags:
-    - host
   when: host_use_syslogd_server | default(false)
 - import_tasks: tarsnap.yml
   when: tarsnap_enabled
-  tags:
-    - host
+- import_tasks: timezone.yml
+- import_tasks: user.yml
+- import_tasks: zpool.yml
