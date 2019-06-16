@@ -42,3 +42,11 @@
     state: present
     regexp: '^hostname='
     line: 'hostname="{{ host_hostname }}"'
+
+- name: Add hostname to /etc/hosts
+  lineinfile:
+    backup: '{{ backup_old_files }}'
+    dest: '/etc/hosts'
+    state: present
+    regexp: '^{{ host_net_int_ip }}'
+    line: '{{ host_net_int_ip }}  {{ host_hostname }}'
