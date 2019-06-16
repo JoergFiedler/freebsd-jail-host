@@ -1,15 +1,15 @@
-- import_tasks: iocage.yml
 - import_tasks: net.yml
-- import_tasks: ntp.yml
-- import_tasks: packages.yml
 - import_tasks: pf.yml
-- import_tasks: repo.yml
 - import_tasks: sshd.yml
+- import_tasks: repo.yml
+- import_tasks: packages.yml
+- import_tasks: zpool.yml
+- import_tasks: iocage.yml
+- import_tasks: user.yml
+- import_tasks: timezone.yml
 - import_tasks: ssmtp.yml
+- import_tasks: ntp.yml
 - import_tasks: syslogd-client.yml
   when: host_use_syslogd_server | default(false)
 - import_tasks: tarsnap.yml
   when: tarsnap_enabled
-- import_tasks: timezone.yml
-- import_tasks: user.yml
-- import_tasks: zpool.yml
