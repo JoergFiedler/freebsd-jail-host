@@ -12,14 +12,14 @@ hourly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
 hourly_zfs_snapshot_keep=10
 
 daily_zfs_snapshot_enable="YES"
-hourly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
+daily_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
 daily_zfs_snapshot_keep=6
 
 weekly_zfs_snapshot_enable="YES"
-hourly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
+weekly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
 weekly_zfs_snapshot_keep=3
 
 monthly_zfs_snapshot_enable="YES"
-hourly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
+monthly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
 monthly_zfs_snapshot_keep=1
 

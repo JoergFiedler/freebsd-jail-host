@@ -52,9 +52,9 @@
     dest: '/usr/local/etc/tarsnapper.d/host-home.yml'
 
 - name: Copy weekly script
-  copy:
+  template:
     backup: '{{ backup_old_files }}'
-    src: '901.tarsnap'
+    src: '901.tarsnap.sh.j2'
     dest: '/usr/local/etc/periodic/weekly/901.tarsnap'
     mode: 0755
 
