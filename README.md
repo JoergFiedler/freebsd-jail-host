@@ -62,7 +62,7 @@ ZPool that should be used for `/home`. Default: `'tank'`.
 
 ##### host_ioc_release_version
 
-The FreeBSD version fetched/used by iocage. Default: `11.1-RELEASE`.
+The FreeBSD version fetched/used by iocage, defaults to host release version. Default: `{{ ansible_distribution_version }}-RELEASE`.
 
 ##### host_ioc_zpool_name
 
