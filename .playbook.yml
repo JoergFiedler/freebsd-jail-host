@@ -2,7 +2,7 @@
   become: true
 
   vars:
-    ansible_python_interpreter: '/usr/local/bin/python2.7'
+    ansible_python_interpreter: '/usr/local/bin/python3.6'
 
   roles:
     - role: 'JoergFiedler.freebsd-jail-host'

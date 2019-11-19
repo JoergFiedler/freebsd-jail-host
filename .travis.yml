@@ -12,7 +12,7 @@ before_script:
 script:
 - ansible-lint .
 - yamllint .
-- vagrant box add JoergFiedler/FreeBSD-11.2 --provider aws
+- vagrant box add JoergFiedler/FreeBSD-12 --provider aws
 - vagrant up --provider aws
 - vagrant ssh -c "iocage list -h"
 after_script:
