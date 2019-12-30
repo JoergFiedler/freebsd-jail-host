@@ -1,6 +1,6 @@
 - name: Install iocage
   pkgng:
-    name: 'py36-iocage'
+    name: '{{ host_python_flavor }}-iocage'
     state: present
   register: pkg_result
   until: pkg_result is succeeded

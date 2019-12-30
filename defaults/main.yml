@@ -8,6 +8,7 @@ host_net_int_ip: '10.1.0.1'
 host_net_int_net: '10.1.0.1/24'
 
 host_hostname: 'amnesiac'
+host_python_flavor: 'py37'
 host_syslogd_server: ''
 host_timezone: 'Europe/Berlin'
 host_use_syslogd_server: false
