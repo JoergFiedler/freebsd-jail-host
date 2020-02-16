@@ -3,14 +3,8 @@
     name: '{{ item }}'
     state: present
   loop:
-    - tarsnap
-    - py36-pip
-  register: pkg_result
-  until: pkg_result is succeeded
-
-- name: Install tarsnapper
-  pip:
-    name: 'tarsnapper'
+    - 'tarsnap'
+    - '{{ host_python_flavor }}-tarsnapper'
   register: pkg_result
   until: pkg_result is succeeded
 
