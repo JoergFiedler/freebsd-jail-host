@@ -202,9 +202,6 @@ Playbook example with overridden defaults to use this role to setup a EC2 instan
     - hosts: all
       become: true
 
-      vars:
-        ansible_python_interpreter: '/usr/local/bin/python2.7'
-
     roles:
       - role: 'JoergFiedler.freebsd-jail-host'
 
