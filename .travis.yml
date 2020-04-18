@@ -1,25 +1,28 @@
+language: ruby
+rvm:
+  - 2.6
 dist: bionic
-language: python
 install:
-- wget https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
-- sudo dpkg -i vagrant_2.2.2_x86_64.deb
-- pip install -r .requirements.txt
+  - wget https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb
+  - sudo dpkg -i vagrant_2.2.4_x86_64.deb
+  - wget https://github.com/bdwyertech/vagrant-aws/releases/download/v0.8.0-bdwyertech/vagrant-aws-0.8.0.gem
+  - vagrant plugin install vagrant-aws-0.8.0.gem
+  - pip install -r .requirements.txt
 before_script:
-- vagrant plugin install vagrant-aws
-- ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
-- ln -s ./ JoergFiedler.freebsd-jail-host
+  - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
+  - ln -s ./ JoergFiedler.freebsd-jail-host
 script:
-- ansible-lint .
-- yamllint .
-- vagrant box add JoergFiedler/FreeBSD-12 --provider aws
-- vagrant up --provider aws
-- vagrant ssh -c "iocage list -h"
+  - ansible-lint .
+  - yamllint .
+  - vagrant box add JoergFiedler/FreeBSD-12 --provider aws
+  - vagrant up --provider aws
+  - vagrant ssh -c "iocage list -h"
 after_script:
-- vagrant destroy -f
+  - vagrant destroy -f
 notifications:
   webhooks:
     - https://galaxy.ansible.com/api/v1/notifications/
 env:
   global:
-  - secure: cx6vOUlmVyc7IUmR/TVK/gBL8xoV44hUTBIy207Yf3Uif1BpbjBsYspE6dAUuBF21lPTKJ2vhnLuoM7ImwzjDsNGXuhw5KuswDxxvJgQlu/GAHEy6SsYHIO7o0mFBE7EF7TRbskGf7VnP9hbec+oTuVxX8ASPK1ACtK3S6QS4hOIhNjGwpLwhnvqCJbRjeZirmbtw8upS5Cy4NzIzVwmZz0DK4mIRszZ+joYPvMMeK/58Im82xrWkYpjc9DEowOYsz7FH6pz4tUeVET7o30siwyaFS5FM/GNXa6aNo2ZnpBAleM1JpWiogwoTQxPGUOjcH7R1QPeNgTGNRA8rjsixkgkBljYLRPTuEwCSko5AEMscbNhDBnqWC6AAQ+ItR2Ba/cBxEHAlUhDPI03mpd0NOq51nAsNN0al0kNx5AqvNlQNUSyRyggUNBOtGGlmwu6Lu0v3zbdkusnL8qQ37twyzfMVNOF7LLEpOwzHYgozcGmQa51njFdU8khgfJIzvDcvRreO52Mgl9FJGqOUZHmUMyhztjJ19Aqtr8NV8wfJ+UDn65y7tIy+T2Gn05I0WfJWamBGj1oD3o5PHQsE7H6bcNFmNccC2rzpmNLMd2GB9TTCrlqwlIpg8wYMrmvdTGYuvZlBULS5Pd2NH+ze24tgDogIMV1hIueNn18LBkHrrU=
-  - secure: E44y1oSIE2hl9sXPdTdB/xSUQ014/UYILHiNTqhT9stWMWLFweaC8GB0h3AyS7f1VJK9ALthz/iG/D+yEYBz5aj/ZygKcnmOrz6RpXKztwkwA+O9Kf4KP+BfJPeflvJ4jolRclIeMyiv+LtUoAIxuAwIkrJoRQaTkNP9uqgvPco+7NBMKrzJW1ncpS1MUfbq5bQ/NJdZCfy58usOb8AMPZakoG8GcaOlE9y2zyzHYRnImlckW6p7QQYl2Mi8J5gBvIxqprlrbCXVk9862BGyFvL6YEf3BIHqvYIR4l6Vm7/dY2bXDN2uzDYPkz1kb+Pw7F65uuBA+DXqWnAc1702dbAFC1IO5gBtofAA56SjVySMM64vmr5W8yEIiSjI/xWVTc2X18O1BsTluf1mtPswfdZaiju67NOJyToRQ1bw7dojIxG/SDuL9I9Mzhr3d7cSgDjrgUzCr3M48IsVuVvEaOt8VU6JeRZYcjq7oYMF+PPWTZcTey6KXYcqbl+OrTy2+8ICppS2PyFexu+B2OqpD5+2lO/XSsEetahUT6mVtwlsoJab7FK/HDyqcyd+vPHnJOWyRVu7rsMApAAKEp023SjNUzQLlw/mzq8gCxHvhXZM80TqOsnb7ALP1Z5sDi4U7j3lCdhuftDySNL9LZVxfA4erYCkOOzOlv+tDRxAAtI=
+    - secure: cx6vOUlmVyc7IUmR/TVK/gBL8xoV44hUTBIy207Yf3Uif1BpbjBsYspE6dAUuBF21lPTKJ2vhnLuoM7ImwzjDsNGXuhw5KuswDxxvJgQlu/GAHEy6SsYHIO7o0mFBE7EF7TRbskGf7VnP9hbec+oTuVxX8ASPK1ACtK3S6QS4hOIhNjGwpLwhnvqCJbRjeZirmbtw8upS5Cy4NzIzVwmZz0DK4mIRszZ+joYPvMMeK/58Im82xrWkYpjc9DEowOYsz7FH6pz4tUeVET7o30siwyaFS5FM/GNXa6aNo2ZnpBAleM1JpWiogwoTQxPGUOjcH7R1QPeNgTGNRA8rjsixkgkBljYLRPTuEwCSko5AEMscbNhDBnqWC6AAQ+ItR2Ba/cBxEHAlUhDPI03mpd0NOq51nAsNN0al0kNx5AqvNlQNUSyRyggUNBOtGGlmwu6Lu0v3zbdkusnL8qQ37twyzfMVNOF7LLEpOwzHYgozcGmQa51njFdU8khgfJIzvDcvRreO52Mgl9FJGqOUZHmUMyhztjJ19Aqtr8NV8wfJ+UDn65y7tIy+T2Gn05I0WfJWamBGj1oD3o5PHQsE7H6bcNFmNccC2rzpmNLMd2GB9TTCrlqwlIpg8wYMrmvdTGYuvZlBULS5Pd2NH+ze24tgDogIMV1hIueNn18LBkHrrU=
+    - secure: E44y1oSIE2hl9sXPdTdB/xSUQ014/UYILHiNTqhT9stWMWLFweaC8GB0h3AyS7f1VJK9ALthz/iG/D+yEYBz5aj/ZygKcnmOrz6RpXKztwkwA+O9Kf4KP+BfJPeflvJ4jolRclIeMyiv+LtUoAIxuAwIkrJoRQaTkNP9uqgvPco+7NBMKrzJW1ncpS1MUfbq5bQ/NJdZCfy58usOb8AMPZakoG8GcaOlE9y2zyzHYRnImlckW6p7QQYl2Mi8J5gBvIxqprlrbCXVk9862BGyFvL6YEf3BIHqvYIR4l6Vm7/dY2bXDN2uzDYPkz1kb+Pw7F65uuBA+DXqWnAc1702dbAFC1IO5gBtofAA56SjVySMM64vmr5W8yEIiSjI/xWVTc2X18O1BsTluf1mtPswfdZaiju67NOJyToRQ1bw7dojIxG/SDuL9I9Mzhr3d7cSgDjrgUzCr3M48IsVuVvEaOt8VU6JeRZYcjq7oYMF+PPWTZcTey6KXYcqbl+OrTy2+8ICppS2PyFexu+B2OqpD5+2lO/XSsEetahUT6mVtwlsoJab7FK/HDyqcyd+vPHnJOWyRVu7rsMApAAKEp023SjNUzQLlw/mzq8gCxHvhXZM80TqOsnb7ALP1Z5sDi4U7j3lCdhuftDySNL9LZVxfA4erYCkOOzOlv+tDRxAAtI=
