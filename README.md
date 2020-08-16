@@ -54,6 +54,14 @@ as well. Default: `10.1.0.1`.
 The netmask for the jail's internal network. Used allow UDP pass pf in order to
 reach syslogd. Default: `'10.1.0.1/24'`.
 
+##### host_net_priv_if
+
+Set this var to configure a private network interface for your host. The interface itself is configured via DHCP, but please make sure the variable `host_net_priv_ip` is set to the values that is return from DHCP request. Default: `''`.
+
+##### host_net_priv_ip
+
+Set the ip to be used on private network interface. Even the interface configures itself via DHCP, still add the ip here that is returned from DHCP request. Default: `''`.
+
 ### Disk/ZFS/iocage
 
 ##### host_home_zpool_name
