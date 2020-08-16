@@ -9,15 +9,15 @@ hourly_show_badconfig="NO"
 
 hourly_zfs_snapshot_enable="YES"
 hourly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
-hourly_zfs_snapshot_keep=10
+hourly_zfs_snapshot_keep=12
 
 daily_zfs_snapshot_enable="YES"
 daily_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
-daily_zfs_snapshot_keep=6
+daily_zfs_snapshot_keep=7
 
 weekly_zfs_snapshot_enable="YES"
 weekly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"
-weekly_zfs_snapshot_keep=3
+weekly_zfs_snapshot_keep=4
 
 monthly_zfs_snapshot_enable="YES"
 monthly_zfs_snapshot_pools="{{ host_srv_zpool_name }} {{ host_ioc_zpool_name }}"

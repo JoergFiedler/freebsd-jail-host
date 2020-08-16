@@ -37,7 +37,7 @@
     name: 'tarsnapper'
     minute: '15'
     hour: '*/12'
-    job: 'PATH=$PATH:/usr/local/bin /usr/local/bin/tarsnapper -c /usr/local/etc/tarsnapper.yml make'
+    job: 'PATH=$PATH:/usr/local/bin /usr/local/bin/tarsnapper -c /usr/local/etc/tarsnapper.yml make --no-expire'
 
 - name: Copy backup config for home directory
   template:
@@ -51,8 +51,3 @@
     src: '901.tarsnap.sh.j2'
     dest: '/usr/local/etc/periodic/weekly/901.tarsnap'
     mode: 0755
-
-- name: Run tarsnap fsck
-  command: '/usr/local/bin/tarsnap --fsck'
-  changed_when: false
-  when: keyfile_created is changed
