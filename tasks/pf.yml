@@ -1,6 +1,6 @@
 - name: Copy pf.conf
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'pf.conf.j2'
     dest: '/etc/pf.conf'
     mode: '0644'

@@ -1,6 +1,6 @@
 - name: Copy ntp config
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'ntp.conf.j2'
     dest: '/etc/ntp.conf'
 

@@ -1,6 +1,6 @@
 - name: Adjust sshd (allowed user, authentication, ..)
   lineinfile:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     dest: '/etc/ssh/sshd_config'
     state: present
     regexp: '{{ item.regexp }}'

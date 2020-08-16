@@ -10,7 +10,7 @@
 
 - name: Copy tarsnap key file
   copy:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: '{{ tarsnap_keyfile }}'
     dest: '/root/tarsnap.key'
   register: keyfile_created
@@ -22,13 +22,13 @@
 
 - name: Copy tarsnapper config
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'tarsnapper.yml.j2'
     dest: '/usr/local/etc/tarsnapper.yml'
 
 - name: Copy tarsnap config file
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'tarsnap.conf.j2'
     dest: '/usr/local/etc/tarsnap.conf'
 
@@ -41,13 +41,13 @@
 
 - name: Copy backup config for home directory
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'host-home.yml.j2'
     dest: '/usr/local/etc/tarsnapper.d/host-home.yml'
 
 - name: Copy weekly script
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: '901.tarsnap.sh.j2'
     dest: '/usr/local/etc/periodic/weekly/901.tarsnap'
     mode: 0755
