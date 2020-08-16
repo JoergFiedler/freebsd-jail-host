@@ -7,11 +7,12 @@
 
 - name: Copy ssmtp.conf into place
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'ssmtp.conf.j2'
     dest: '/usr/local/etc/ssmtp/ssmtp.conf'
 
 - name: Copy mailer configuration into place
-  copy:
-    src: 'mailer.conf'
+  template:
+    backup: '{{ host_backup_old_files }}'
+    src: 'mailer.conf.j2'
     dest: '/etc/mail/mailer.conf'

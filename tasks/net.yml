@@ -1,6 +1,6 @@
 - name: Add additional ext ip to config
   lineinfile:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     dest: '/etc/rc.conf'
     state: present
     regex: '^ifconfig_{{ host_net_ext_if }}_alias0'
@@ -15,7 +15,7 @@
 
 - name: Configure internal ip on jails network interface
   lineinfile:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     dest: '/etc/rc.conf'
     state: present
     regex: '^ifconfig_{{ host_net_int_if }}_alias0'
@@ -37,7 +37,7 @@
 
 - name: Add hostname to rc.conf
   lineinfile:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     dest: '/etc/rc.conf'
     state: present
     regexp: '^hostname='
@@ -45,7 +45,7 @@
 
 - name: Add hostname to /etc/hosts
   lineinfile:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     dest: '/etc/hosts'
     state: present
     regexp: '^{{ host_net_int_ip }}'

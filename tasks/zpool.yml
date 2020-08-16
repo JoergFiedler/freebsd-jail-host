@@ -42,7 +42,7 @@
 
 - name: Copy periodic conf for regular snapshots
   template:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     src: 'periodic.conf.j2'
     dest: '/etc/periodic.conf'
 
@@ -55,7 +55,7 @@
 
 - name: Create entry in crontab to create hourly snapshots
   lineinfile:
-    backup: '{{ backup_old_files }}'
+    backup: '{{ host_backup_old_files }}'
     dest: '/etc/crontab'
     line: '47      *       *       *       *       root    periodic hourly'
     insertafter: '^# Perform daily/weekly/monthly'

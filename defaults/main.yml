@@ -1,5 +1,5 @@
 # defaults file for jail_host
-backup_old_files: yes
+host_backup_old_files: yes
 
 host_net_ext_if: '{{ ansible_default_ipv4.interface }}'
 host_net_ext_ip: '{{ ansible_default_ipv4.address }}'
