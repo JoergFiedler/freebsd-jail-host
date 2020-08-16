@@ -26,6 +26,20 @@
   command: 'ifconfig {{ host_net_int_if }} inet alias {{ host_net_int_ip }} netmask 255.255.255.255'
   when: internal_ip is changed
 
+- name: Configure private subnet ip on host private network interface
+  lineinfile:
+    backup: '{{ host_backup_old_files }}'
+    dest: '/etc/rc.conf'
+    state: present
+    regex: '^ifconfig_{{ host_net_priv_if }}'
+    line: 'ifconfig_{{ host_net_priv_if }}="DHCP"'
+  when: host_net_priv_if | default('') | length > 0
+  register: private_ip
+
+- name: Add internal ip to jails network interface
+  command: '/sbin/dhclient {{ host_net_priv_if }}'
+  when: private_ip is changed
+
 - name: Get hostname
   command: 'hostname'
   register: hostname
