@@ -31,6 +31,9 @@ block in log all
 
 # allow dhcp
 pass out quick log on $ext_if inet proto udp from any port { bootps,bootpc } to any port { bootps,bootpc } keep state
+{% if host_net_priv_if != '' %}
+pass out quick log on $host_net_priv_if inet proto udp from any port { bootps,bootpc } to any port { bootps,bootpc } keep state
+{% endif %}
 
 # allow sshd (as long as there is no jump jail)
 pass log proto tcp from any to $ext_ip port $sshd_port keep state
