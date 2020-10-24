@@ -34,6 +34,14 @@
 
 - name: Create entry in crontab
   cron:
+    name: 'tarsnap fsck'
+    minute: '20'
+    hour: '20'
+    weekday: '0'
+    job: 'PATH=$PATH:/usr/local/bin /usr/local/bin/tarsnap --fsck'
+
+- name: Create entry in crontab
+  cron:
     name: 'tarsnapper'
     minute: '15'
     hour: '*/12'
